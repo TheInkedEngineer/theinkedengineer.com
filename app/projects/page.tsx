@@ -1,0 +1,268 @@
+"use client"
+
+import { useState } from "react"
+import Link from "next/link"
+import { Navigation } from "@/components/navigation"
+
+const projects = {
+  ios: [
+    {
+      id: "spritz",
+      title: "Spritz",
+      description:
+        "A refreshing iOS app for citrus lovers. Track your daily vitamin C intake with beautiful animations and intuitive design.",
+      tech: ["Swift", "SwiftUI", "Core Data", "HealthKit"],
+      status: "Live on App Store",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-orange-400 to-orange-600",
+      year: "2024",
+      link: "https://apps.apple.com/app/spritz",
+    },
+    {
+      id: "cleanmymac-business",
+      title: "CleanMyMac Business",
+      description:
+        "Enterprise-grade Mac cleaning and optimization tool. Built with performance and security in mind for business environments.",
+      tech: ["Swift", "AppKit", "System Extensions", "Core Foundation"],
+      status: "Enterprise Solution",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-purple-500 to-pink-500",
+      year: "2023",
+      link: "https://cleanmymac.com/business",
+    },
+    {
+      id: "toosie-slide",
+      title: "Toosie Slide",
+      description:
+        "Interactive music visualization app that responds to your movements. Dance and watch the visual magic unfold.",
+      tech: ["Swift", "Metal", "Core Motion", "AVFoundation"],
+      status: "In Development",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-gray-700 to-gray-900",
+      year: "2024",
+      link: "#",
+    },
+    {
+      id: "espresso-martini",
+      title: "Espresso Martini",
+      description:
+        "Vapor-powered mock server for iOS development. Test your apps with realistic API responses and edge cases.",
+      tech: ["Swift", "Vapor", "Networking", "JSON"],
+      status: "Open Source",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-amber-600 to-yellow-500",
+      year: "2023",
+      link: "https://github.com/theinkedengineer/espresso-martini",
+    },
+  ],
+  web: [
+    {
+      id: "portfolio-2024",
+      title: "The Inked Engineer",
+      description:
+        "This very website! Built with Next.js, featuring bold animations and a playful design system that brings personality to tech.",
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      status: "Live",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-yellow-400 to-pink-400",
+      year: "2024",
+      link: "https://theinkedengineer.com",
+    },
+    {
+      id: "swift-blog",
+      title: "Swift Development Blog",
+      description:
+        "Technical blog platform focused on Swift and iOS development. Features markdown support and syntax highlighting.",
+      tech: ["Next.js", "MDX", "Prisma", "PostgreSQL"],
+      status: "Live",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-blue-500 to-indigo-600",
+      year: "2023",
+      link: "https://blog.theinkedengineer.com",
+    },
+    {
+      id: "api-playground",
+      title: "API Testing Playground",
+      description:
+        "Interactive web tool for testing REST APIs. Built for developers who need quick API validation and debugging.",
+      tech: ["React", "Node.js", "Express", "MongoDB"],
+      status: "Beta",
+      image: "/placeholder.svg?height=300&width=400",
+      color: "from-green-500 to-teal-500",
+      year: "2024",
+      link: "#",
+    },
+  ],
+}
+
+export default function ProjectsPage() {
+  const [activeCategory, setActiveCategory] = useState<"ios" | "web">("ios")
+
+  return (
+    <>
+      <main className="min-h-screen bg-[#F4D35E] pb-20">
+        {/* Header Section */}
+        <header className="relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0" aria-hidden="true">
+            <div className="absolute top-0 left-1/4 w-1/3 h-40 bg-[#F8C0C8] transform -rotate-12 -translate-y-16"></div>
+            <div className="absolute top-32 right-0 w-1/4 h-32 bg-[#F8C0C8] transform rotate-45 translate-x-12"></div>
+            <div className="absolute bottom-0 left-0 w-1/5 h-24 bg-[#F8C0C8] transform rotate-12 -translate-x-8"></div>
+          </div>
+
+          <div className="relative z-10 container mx-auto px-6 py-16">
+            <div className="max-w-4xl">
+              <h1 className="text-6xl md:text-8xl font-black text-black leading-none mb-6">
+                THINGS I
+                <br />
+                BUILT
+              </h1>
+              <p className="text-xl md:text-2xl text-black font-medium max-w-2xl">
+                From iOS apps that delight users to web platforms that solve real problems.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        {/* Category Toggle */}
+        <div className="container mx-auto px-6 mb-12">
+          <div className="flex justify-center">
+            <div className="bg-black rounded-full p-2 flex gap-2">
+              <button
+                onClick={() => setActiveCategory("ios")}
+                className={`px-8 py-4 font-bold rounded-full transition-all duration-300 ${
+                  activeCategory === "ios"
+                    ? "bg-[#F4D35E] text-black transform scale-105"
+                    : "text-white hover:text-[#F4D35E]"
+                }`}
+              >
+                iOS Development
+              </button>
+              <button
+                onClick={() => setActiveCategory("web")}
+                className={`px-8 py-4 font-bold rounded-full transition-all duration-300 ${
+                  activeCategory === "web"
+                    ? "bg-[#F4D35E] text-black transform scale-105"
+                    : "text-white hover:text-[#F4D35E]"
+                }`}
+              >
+                Web Development
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="container mx-auto px-6">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+            {projects[activeCategory].map((project, index) => (
+              <div
+                key={project.id}
+                className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border-4 border-black hover:border-[#F8C0C8]"
+              >
+                {/* Project Image */}
+                <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-cover mix-blend-overlay opacity-80"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className="px-3 py-1 bg-black/80 text-white text-sm font-bold rounded-full">
+                      {project.year}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-4 left-4">
+                    <span
+                      className={`px-3 py-1 text-xs font-bold rounded-full ${
+                        project.status === "Live" || project.status === "Live on App Store"
+                          ? "bg-green-500 text-white"
+                          : project.status === "In Development" || project.status === "Beta"
+                            ? "bg-yellow-500 text-black"
+                            : "bg-blue-500 text-white"
+                      }`}
+                    >
+                      {project.status}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Project Content */}
+                <div className="p-8">
+                  <h3 className="text-2xl font-black text-black mb-3 group-hover:text-[#F8C0C8] transition-colors">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                      <span key={tech} className="px-3 py-1 bg-[#F4D35E] text-black text-sm font-semibold rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Project Link */}
+                  <div className="flex items-center justify-between">
+                    <Link
+                      href={project.link}
+                      className="inline-flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors"
+                      {...(project.link.startsWith("http") && {
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      })}
+                    >
+                      <span className="mr-2">{project.link.startsWith("http") ? "View Project" : "Coming Soon"}</span>
+                      {project.link.startsWith("http") && (
+                        <svg
+                          className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={3}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      )}
+                    </Link>
+
+                    <div className="text-right">
+                      <div className="text-3xl font-black text-[#F8C0C8]">{String(index + 1).padStart(2, "0")}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className="mt-16 text-center">
+            <div className="bg-black rounded-3xl p-12 border-4 border-[#F8C0C8]">
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Got an idea?</h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                I'm always excited to work on new projects and collaborate with creative minds.
+              </p>
+              <Link
+                href="mailto:firas@hey.com"
+                className="inline-flex items-center px-8 py-4 bg-[#F4D35E] text-black font-bold rounded-full hover:bg-[#F8C0C8] transition-all duration-300 transform hover:scale-105"
+              >
+                <span className="mr-2">Let's build something amazing</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <Navigation />
+    </>
+  )
+}
