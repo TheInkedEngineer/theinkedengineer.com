@@ -28,7 +28,7 @@ Remember however, not all fonts have custom stylistic set.
 
 - Start off by printing the information of the font. To do so, add this somewhere in your code:
 
-```
+```swift
 let font = UIFont.systemFont(ofSize: 12)
 print(CTFontCopyFeatures(font))
 ```
@@ -36,7 +36,7 @@ print(CTFontCopyFeatures(font))
 This will print out a large array containing several information. 
 The array element we are interested in is the feature type with an identifier value equal to 35 as shown below.
 
-```
+```swift
 {
   CTFeatureTypeIdentifier = 35;
   CTFeatureTypeName = "Alternative Stylistic Sets";
@@ -83,7 +83,7 @@ The goal is to customize the font descriptor to use the stylistic sets we want.
 
 - We start by creating a dictionary of type `[UIFontDescriptor.FeatureKey: Int]` for each stylistic set.
 
-```
+```swift
 let openFourStylisticSet: [UIFontDescriptor.FeatureKey: Int] = [
   .featureIdentifier: kStylisticAlternativesType,
   .typeIdentifier: 4
@@ -96,7 +96,7 @@ let highLegibilityStylisticSet: [UIFontDescriptor.FeatureKey: Int] = [
 ```
 - We then create a font descriptor by adding attributes to the font's existing descriptor.
 
-```
+```swift
 let descriptor = UIFont.systemFont(ofSize: 12)
   .fontDescriptor
   .addingAttributes(
@@ -106,7 +106,7 @@ let descriptor = UIFont.systemFont(ofSize: 12)
 
 - Finally we create our new font using the `init(descriptor: UIFontDescriptor, size: CGFloat)`.
 
-```
+```swift
 // By passing 0 as a size we fallback of the on the font's descriptor font size. 
 let font = UIFont(descriptor: descriptor, size: 0)
 ```
@@ -115,7 +115,7 @@ let font = UIFont(descriptor: descriptor, size: 0)
 
 Below is a full code example on how to apply all what we learned and put in an elegant way as a `UIFont` extension.
 
-```
+```swift
 extension UIFont {
   static func alternateSystemFont(size: CGFloat, weight: Weight) -> UIFont {
     let openFourStylisticSet: [UIFontDescriptor.FeatureKey: Int] = [

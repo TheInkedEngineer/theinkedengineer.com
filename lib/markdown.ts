@@ -4,7 +4,9 @@ import matter from 'gray-matter'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
-import remarkHtml from 'remark-html'
+import remarkRehype from 'remark-rehype'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeStringify from 'rehype-stringify'
 
 export interface Article {
   slug: string
@@ -82,7 +84,12 @@ export async function markdownToHtml(content: string): Promise<string> {
   const result = await unified()
     .use(remarkParse)
     .use(remarkGfm)
-    .use(remarkHtml, { sanitize: false })
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeHighlight, {
+      detect: false,
+      subset: ['swift', 'javascript', 'typescript', 'css', 'html', 'bash', 'json']
+    })
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content)
 
   return result.toString()

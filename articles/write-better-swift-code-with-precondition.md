@@ -14,7 +14,7 @@ An efficient, elegant way to do so, is to use Swift’s Standard Library functio
 
 Below is an example on how to use precondition and how it can make your code look better and more compact:
 
-```
+```swift
 func circumferenceOfCircle(with radius: Int) -> Double {
   precondition(radius > 0, "Radius can not be negative")
   return 2 * Double.pi * Double(radius)

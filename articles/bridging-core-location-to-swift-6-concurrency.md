@@ -20,7 +20,7 @@ In this article, we’ll explore how to bridge `CoreLocation`’s delegate-based
 
 Here’s how you might traditionally implement a LocationManager to get the current location and be notified when it changes:
 
-```
+```swift
 import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -64,7 +64,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
 
 To use this LocationManager in a SwiftUI view, you set up the manager and handle updates via the callback:
 
-```
+```swift
 import SwiftUI
 
 struct ContentView: View {
@@ -118,7 +118,7 @@ Swift’s withCheckedThrowingContinuation is a powerful tool for bridging the ga
 
 Here’s how we expose the current location using `withCheckedThrowingContinuation`:
 
-```
+```swift
 import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -164,7 +164,7 @@ When we call await locationManager.currentLocation, the code execution is suspen
     - When the location manager successfully retrieves the device’s location, the delegate method `locationManager(_:didUpdateLocations:)` is called.
     - In this delegate method, we resume the suspended task by calling `currentLocationContinuation?.resume(returning: location)`, passing the fetched CLLocation to the awaiting code.
 
-```
+```swift
 func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     if let location = locations.last {
         currentLocationContinuation?.resume(returning: location)
@@ -176,7 +176,7 @@ func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:
 4. Handling Errors:
 - If an error occurs during location fetching, the delegate method `locationManager(_:didFailWithError:)` is triggered. Here, we call `resume(throwing:)` on the continuation to throw the error back to the awaiting code.
 
-```
+```swift
 func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     currentLocationContinuation?.resume(throwing: error)
     currentLocationContinuation = nil // Clear the continuation after resuming
@@ -208,7 +208,7 @@ We annotate the currentLocation property with `@MainActor` because:
 
 Here’s an example of how you can use the currentLocation property in a SwiftUI view:
 
-```
+```swift
 import SwiftUI
 
 struct ContentView: View {
@@ -247,7 +247,7 @@ While `withCheckedThrowingContinuation` works well for fetching a single value a
 
 Initially, you might attempt to use `AsyncStream` to handle continuous location updates from CLLocationManager, like so:
 
-```
+```swift
 import CoreLocation
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
@@ -308,7 +308,7 @@ To address these issues, we need to:
 
  Step 1: Making CLLocationManager Sendable
 
-```
+```swift
 /// Extends `CLLocationManager` to conform to the `Sendable` protocol.
 ///
 /// - Note:
@@ -325,7 +325,7 @@ By marking `CLLocationManager` as `@unchecked @retroactive Sendable`, we are ass
 
 The protected state is an object holding a mutable state that should be protected by a locking mechanism.
 
-```
+```swift
 struct ProtectedState {
     /// Continuation for delivering `CLAuthorizationStatus` status to most-recent caller of `locationUpdates()`
     fileprivate var locationStreamContinuations: [UUID: AsyncStream<CLLocation>.Continuation?] = [:]
@@ -337,7 +337,7 @@ struct ProtectedState {
 
 We will use a custom lock to synchronize access to the shared state:
 
-```
+```swift
 import Foundation
 import os
 
@@ -357,7 +357,7 @@ final class ModernLock<State: Sendable>: Sendable {
 
 if we need to support prior versions of iOS, we can use `NSLock`:
 
-```
+```swift
 import Foundation
 
 final class LegacyLock<State>: @unchecked Sendable {
@@ -381,7 +381,7 @@ final class LegacyLock<State>: @unchecked Sendable {
 
 Now, we’ll refactor the LocationManager to use a protected state and support multiple subscribers:
 
-```
+```swift
 import CoreLocation
 import os
 

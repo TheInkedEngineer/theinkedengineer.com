@@ -8,7 +8,7 @@ description: 'A Swift way to see if app is running XCTest.'
 
 While writing unit tests for function in my [framework](https://github.com/TheInkedEngineer/BloodyMary), I ran into a problem in the following function:
 
-```
+```swift
 public func pushViewController( 
 _ viewController: UIViewController, 
 animated: Bool, 
@@ -35,7 +35,7 @@ the thread running the *XCTest* contains the following key: `com.apple.dt.xctest
 
 So I wrote this extension:
 
-```
+```swift
 extension Thread {
   var isRunningXCTest: Bool {
     for key in self.threadDictionary.allKeys {
@@ -56,7 +56,7 @@ I opted to check for *xctest* alone and not the whole key to future proof it, fr
 
 So now the code looks like this:
 
-```
+```swift
 public func pushViewController( 
 _ viewController: UIViewController, 
 animated: Bool, 

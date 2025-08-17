@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "highlight.js/styles/github-dark.css";
 
 /* Custom CSS Variables */
 :root {
@@ -504,17 +505,60 @@
   @apply mb-2;
 }
 
-.article-content code {
-  @apply bg-yellow-300 text-black px-2 py-1 rounded font-mono text-sm;
+/* Inline code styling */
+.article-content code:not(pre code) {
+  @apply px-2 py-1 rounded font-mono text-sm;
   background-color: var(--yellow);
+  color: #000;
 }
 
+/* Code block styling with syntax highlighting */
 .article-content pre {
-  @apply bg-gray-900 text-green-400 p-6 rounded-xl my-6 overflow-x-auto;
+  @apply rounded-xl my-6 overflow-x-auto;
+  padding: 1.5rem;
+  background: #0d1117 !important;
 }
 
 .article-content pre code {
-  @apply bg-transparent text-green-400 p-0;
+  @apply font-mono text-sm;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Swift-specific syntax highlighting overrides */
+.article-content .hljs-keyword {
+  color: #ff79c6 !important; /* Pink for keywords like func, let, var */
+}
+
+.article-content .hljs-built_in {
+  color: #8be9fd !important; /* Cyan for built-in types */
+}
+
+.article-content .hljs-string {
+  color: #f1fa8c !important; /* Yellow for strings */
+}
+
+.article-content .hljs-number {
+  color: #bd93f9 !important; /* Purple for numbers */
+}
+
+.article-content .hljs-comment {
+  color: #6272a4 !important; /* Gray for comments */
+}
+
+.article-content .hljs-title {
+  color: #50fa7b !important; /* Green for function names */
+}
+
+.article-content .hljs-type {
+  color: #8be9fd !important; /* Cyan for types */
+}
+
+.article-content .hljs-literal {
+  color: #bd93f9 !important; /* Purple for true/false/nil */
 }
 
 .article-content blockquote {

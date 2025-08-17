@@ -52,7 +52,7 @@ When you run your project for the first time, a folder named _Output_ will be cr
 
 The default structure of `main.swift` is the following.
 
-```
+```swift
 // This type acts as the configuration for your website.
 struct MyWebsite: Website {
   enum SectionID: String, WebsiteSectionID {
@@ -106,7 +106,7 @@ The `htmlFactory` on the other hand is slightly more complicated. It should be a
 
 Once the `htmlFactory` is created, we generate our theme like so:
 
-```
+```swift
 static var myTheme: Theme {
   Theme(
     htmlFactory: CustomHTMLFactory(),
@@ -123,7 +123,7 @@ To use the theme, got to `main.swift` and modify the `.publish` method passing y
 
 - Below is a helper to open links in a new tab:
 
-```
+```swift
 /// Add an `<a>` HTML element within the current context.
 /// Add `target="_blank"` and `rel="noopener` by default.
 /// - parameter nodes: The element's attributes and child elements.
@@ -137,7 +137,7 @@ static func externalLink(_ nodes: Node<HTML.AnchorContext>...) -> Self {
 
 - Use an `enum` to list all your `CSS` classes. It will reduce the possibility of a typo. If you do so, the code snippet below will come in handy:
 
-```
+```swift
 extension Node where Context: HTMLContext {
 /// Adds the raw values of the passed elements as classes.
   static func `classes`(_ classes: String...) -> Self {
