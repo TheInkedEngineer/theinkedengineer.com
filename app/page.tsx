@@ -72,7 +72,7 @@ export default function HomePage() {
         {/* Mobile Layout */}
         <div className="md:hidden h-full relative p-4">
           {/* Title Section */}
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-16 left-6">
             <h1 className="mega-title leading-none">
               THE INKED
               <br />

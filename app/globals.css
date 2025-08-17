@@ -322,8 +322,8 @@
   line-height: 0.85;
   opacity: 0;
   animation: fadeInLeft 1s ease-out forwards 1.5s;
-  /* Mobile-first sizing */
-  font-size: clamp(3rem, 12vw, 6rem);
+  /* Mobile-first sizing - slightly bigger on mobile */
+  font-size: clamp(3.5rem, 14vw, 6rem);
 }
 
 .description {
