@@ -10,9 +10,9 @@ const projects = {
       id: "espresso-martini",
       title: "Espresso Martini",
       description:
-        "A Vapor-powered, Swift mock server for iOS, macOS applications as well as a local server. Test your apps with realistic API responses and edge cases.",
+        "A Vapor-powered, Swift local server. Test your apps with realistic API responses and edge cases.",
       tech: ["Swift", "Vapor"],
-      status: "Open Source",
+      status: "SDK",
       image: "/images/projects/espresso-martini.png",
       color: "from-amber-600 to-yellow-500",
       year: "2023",
@@ -118,7 +118,7 @@ export default function ProjectsPage() {
                 BUILT
               </h1>
               <p className="text-xl md:text-2xl text-black font-medium max-w-2xl">
-                From iOS apps that delight users to web platforms that solve real problems.
+                From Apple platform applications and SDKs that delight users to Web applications and portoflios.
               </p>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function ProjectsPage() {
                     : "text-white hover:text-[#F4D35E]"
                 }`}
               >
-                iOS Development
+                Apple Platforms
               </button>
               <button
                 onClick={() => setActiveCategory("web")}
@@ -161,7 +161,7 @@ export default function ProjectsPage() {
                 className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border-4 border-black hover:border-[#F8C0C8]"
               >
                 {/* Project Image */}
-                <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+                <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
                   <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
@@ -195,17 +195,47 @@ export default function ProjectsPage() {
 
                   <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
 
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech) => (
-                      <span key={tech} className="px-3 py-1 bg-[#F4D35E] text-black text-sm font-semibold rounded-full">
-                        {tech}
-                      </span>
-                    ))}
+                  {/* Tech + Desktop Link Row */}
+                  <div className="mb-6">
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech) => (
+                          <span key={tech} className="px-3 py-1 bg-[#F4D35E] text-black text-sm font-semibold rounded-full">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      {/* Desktop/tablet link */}
+                      <Link
+                        href={project.link}
+                        className="hidden md:inline-flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors"
+                        {...(project.link.startsWith("http") && {
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                        })}
+                      >
+                        <span className="mr-2">{project.link.startsWith("http") ? "View Project" : "Coming Soon"}</span>
+                        {project.link.startsWith("http") && (
+                          <svg
+                            className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={3}
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                            />
+                          </svg>
+                        )}
+                      </Link>
+                    </div>
                   </div>
 
-                  {/* Project Link */}
-                  <div className="flex items-center justify-between">
+                  {/* Project Link (mobile only) */}
+                  <div className="md:hidden">
                     <Link
                       href={project.link}
                       className="inline-flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors"
@@ -231,10 +261,6 @@ export default function ProjectsPage() {
                         </svg>
                       )}
                     </Link>
-
-                    <div className="text-right">
-                      <div className="text-3xl font-black text-[#F8C0C8]">{String(index + 1).padStart(2, "0")}</div>
-                    </div>
                   </div>
                 </div>
               </div>

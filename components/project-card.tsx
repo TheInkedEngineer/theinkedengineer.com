@@ -30,7 +30,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Project Image */}
-      <div className={`h-48 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+      <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
         <img
           src={project.image || "/placeholder.svg"}
           alt={project.title}
@@ -71,23 +71,53 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
 
-        {/* Tech Stack */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((tech, techIndex) => (
-            <span
-              key={tech}
-              className={`px-3 py-1 bg-[#F4D35E] text-black text-sm font-semibold rounded-full transition-all duration-300 ${
-                isHovered ? "transform scale-105" : ""
-              }`}
-              style={{ transitionDelay: `${techIndex * 50}ms` }}
+        {/* Tech + Desktop Link Row */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech, techIndex) => (
+                <span
+                  key={tech}
+                  className={`px-3 py-1 bg-[#F4D35E] text-black text-sm font-semibold rounded-full transition-all duration-300 ${
+                    isHovered ? "transform scale-105" : ""
+                  }`}
+                  style={{ transitionDelay: `${techIndex * 50}ms` }}
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            {/* Desktop/tablet link */}
+            <Link
+              href={project.link}
+              className="hidden md:inline-flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors"
+              {...(project.link.startsWith("http") && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
             >
-              {tech}
-            </span>
-          ))}
+              <span className="mr-2">{project.link.startsWith("http") ? "View Project" : "Coming Soon"}</span>
+              {project.link.startsWith("http") && (
+                <svg
+                  className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              )}
+            </Link>
+          </div>
         </div>
 
-        {/* Project Link */}
-        <div className="flex items-center justify-between">
+        {/* Project Link (mobile only) */}
+        <div className="md:hidden">
           <Link
             href={project.link}
             className="inline-flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors"
@@ -113,16 +143,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </svg>
             )}
           </Link>
-
-          <div className="text-right">
-            <div
-              className={`text-3xl font-black text-[#F8C0C8] transition-all duration-300 ${
-                isHovered ? "transform scale-110" : ""
-              }`}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </div>
-          </div>
         </div>
       </div>
     </div>
