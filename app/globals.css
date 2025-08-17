@@ -129,6 +129,25 @@
     @apply bg-[#F4D35E] text-foreground overflow-x-hidden;
     min-height: 100%;
   }
+
+  /* Landing page specific no-scroll class */
+  body.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    overscroll-behavior: none;
+  }
+
+  html:has(body.no-scroll) {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* Enhanced mobile-first responsive design with better touch targets and spacing */
