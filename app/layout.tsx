@@ -79,13 +79,6 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased bg-[#F4D35E] overflow-x-hidden`}>
         {children}
-
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-4 rounded-lg z-50"
-        >
-          Skip to main content
-        </a>
       </body>
     </html>
   )
