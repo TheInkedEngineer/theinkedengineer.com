@@ -109,7 +109,6 @@ export default function HirePage() {
               <ArrowDownIcon className="w-5 h-5 group-hover:animate-bounce" />
               Download CV
             </a>
-            <p className="text-black font-medium">Ready to start immediately</p>
           </div>
         </section>
 

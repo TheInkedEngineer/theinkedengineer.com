@@ -14,7 +14,6 @@ export function Navigation() {
     { href: "/articles", label: "articles"},
     { href: "/projects", label: "projects"},
     { href: "/hire-me", label: "hire me"},
-    { href: "mailto:firas@hey.com", label: "contact", external: true},
   ]
 
   useEffect(() => {

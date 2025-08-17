@@ -72,7 +72,7 @@ const projects = {
       id: "giuliagiacone",
       title: "GiuliaGiacone.com",
       description:
-        "I designed and built a portfolio website for a Milan based stylest. The goal was to build a fun, girly, minimal website.",
+        "I designed and built a portfolio website for a Milan based stylist. The goal was to build a fun, girly, minimal website.",
       tech: ["NextJS"],
       status: "Live",
       image: "/images/projects/giuliagiacone.png",
@@ -275,7 +275,7 @@ export default function ProjectsPage() {
                 I'm always excited to work on new projects and collaborate with creative minds.
               </p>
               <Link
-                href="mailto:firas@hey.com"
+                href="/hire-me"
                 className="inline-flex items-center px-8 py-4 bg-[#F4D35E] text-black font-bold rounded-full hover:bg-[#F8C0C8] transition-all duration-300 transform hover:scale-105"
               >
                 <span className="mr-2">Let's build something amazing</span>
