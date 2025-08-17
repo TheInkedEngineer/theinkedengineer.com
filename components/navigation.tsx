@@ -52,14 +52,11 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`group relative flex flex-col items-center px-3 py-2 md:px-4 md:py-3 rounded-xl transition-all duration-300 transform hover:scale-110 ${
+                  className={`group relative flex items-center justify-center px-3 py-3 md:px-4 md:py-3 rounded-xl transition-all duration-300 transform hover:scale-110 ${
                     isActive ? "bg-[#F4D35E] text-black scale-105" : "text-white hover:text-[#F4D35E] hover:bg-white/10"
                   }`}
                   {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
                 >
-                  {/* Icon for mobile */}
-                  <span className="text-lg md:hidden mb-1">{item.icon}</span>
-
                   {/* Label */}
                   <span className="text-xs md:text-sm font-bold tracking-wide uppercase">{item.label}</span>
 
