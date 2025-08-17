@@ -10,10 +10,11 @@ export function Navigation() {
   const [lastScrollY, setLastScrollY] = useState(0)
 
   const navItems = [
-    { href: "/", label: "home", icon: "🏠" },
-    { href: "/articles", label: "articles", icon: "📝" },
-    { href: "/projects", label: "projects", icon: "🚀" },
-    { href: "mailto:firas@hey.com", label: "contact", external: true, icon: "✉️" },
+    { href: "/", label: "home"},
+    { href: "/articles", label: "articles"},
+    { href: "/projects", label: "projects"},
+    { href: "/hire-me", label: "hire me"},
+    { href: "mailto:firas@hey.com", label: "contact", external: true},
   ]
 
   useEffect(() => {
