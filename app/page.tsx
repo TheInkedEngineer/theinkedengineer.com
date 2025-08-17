@@ -47,7 +47,7 @@ export default function HomePage() {
                 <p className="mb-2">
                   Checkout{" "}
                   <Link href="/projects" className="hover:opacity-80 transition-opacity">
-                    things I worked on
+                    things I built
                   </Link>
                   .
                 </p>
@@ -82,7 +82,7 @@ export default function HomePage() {
                 <p className="mb-2">
                   Checkout{" "}
                   <Link href="/projects" className="hover:opacity-80 transition-opacity">
-                    things I worked on
+                    things I built
                   </Link>
                   .
                 </p>

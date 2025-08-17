@@ -1,66 +1,10 @@
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
-
-// Mock articles data - in a real app, this would come from a CMS or markdown files
-const articles = [
-  {
-    slug: "bridging-core-location-to-swift-6-concurrency",
-    title: "Bridging CoreLocation to Swift 6's Concurrency: Challenges and Solutions",
-    excerpt:
-      "Swift's modern concurrency model, introduced with Swift 5.5, provides powerful tools like async/await and Actors, enabling developers to write more readable and maintainable asynchronous code. However, bridging older APIs, particularly those that rely on delegate patterns, can be challenging.",
-    date: "2024",
-    category: "Swift",
-    readTime: "8 min read",
-  },
-  {
-    slug: "getting-started-with-espresso-martini",
-    title: "Getting started with 'Espresso Martini' - The vapor powered mock server.",
-    excerpt:
-      "Espresso Martini is a vapor-powered mock server written in Swift for iOS developers. Here is how to get started.",
-    date: "2023",
-    category: "Swift",
-    readTime: "5 min read",
-  },
-  {
-    slug: "avoid-using-userdefaults-standard",
-    title: "Avoid using UserDefaults.standard",
-    excerpt:
-      "UserDefaults is a great way to store simple data and retrieve data quickly, but do not use the standard instance.",
-    date: "2023",
-    category: "iOS",
-    readTime: "3 min read",
-  },
-  {
-    slug: "how-i-built-my-website-2022",
-    title: "How I built my website - 2022 Version",
-    excerpt:
-      "A brief overview of how I built my website in 2022 using actual web technologies. Here is what I used and why.",
-    date: "2022",
-    category: "Web",
-    readTime: "6 min read",
-  },
-  {
-    slug: "the-covid-before-christmas",
-    title: "The COVID before Christmas",
-    excerpt:
-      "I tested positive for COVID right before Christmas. It was hell. Not because of the symptoms but because of the shit that called station health review.",
-    date: "2021",
-    category: "Personal",
-    readTime: "4 min read",
-  },
-  {
-    slug: "mocking-requests-using-urlprotocol",
-    title: "Mocking requests using URLProtocol",
-    excerpt: "A step by step guide on how to mock API requests in your iOS app using URLProtocol.",
-    date: "2021",
-    category: "iOS",
-    readTime: "7 min read",
-  },
-]
-
-const categories = ["All", "Swift", "iOS", "Web", "Personal"]
+import { getAllArticles, formatDate } from "@/lib/markdown"
 
 export default function ArticlesPage() {
+  const articles = getAllArticles()
+
   return (
     <>
       <main className="min-h-screen bg-[#F4D35E] pb-20">
@@ -86,20 +30,6 @@ export default function ArticlesPage() {
           </div>
         </div>
 
-        {/* Filter Categories */}
-        <div className="container mx-auto px-4 md:px-6 mb-8 md:mb-12">
-          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className="flex-shrink-0 px-4 md:px-6 py-3 bg-black text-white font-semibold rounded-full hover:bg-[#F8C0C8] hover:text-black transition-all duration-300 transform active:scale-95 min-w-[80px] text-center"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-
         {/* Articles Grid */}
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-6 md:gap-8 lg:gap-12">
@@ -119,10 +49,7 @@ export default function ArticlesPage() {
                     {/* Article Content */}
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-3 md:mb-4">
-                        <span className="px-3 md:px-4 py-1 md:py-2 bg-[#F4D35E] text-black font-bold text-xs md:text-sm rounded-full">
-                          {article.category}
-                        </span>
-                        <span className="text-gray-600 font-medium text-sm md:text-base">{article.date}</span>
+                        <span className="text-gray-600 font-medium text-sm md:text-base">{formatDate(article.date)}</span>
                         <span className="text-gray-600 text-sm md:text-base">{article.readTime}</span>
                       </div>
 
@@ -131,7 +58,7 @@ export default function ArticlesPage() {
                       </h2>
 
                       <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
-                        {article.excerpt}
+                        {article.description}
                       </p>
 
                       <div className="flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors">
