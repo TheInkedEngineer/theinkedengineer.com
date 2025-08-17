@@ -100,7 +100,7 @@ export default function ProjectsPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-[#F4D35E] pb-20">
+      <main className="min-h-[100vh] min-h-[100dvh] bg-[#F4D35E] pb-20">
         {/* Header Section */}
         <header className="relative overflow-hidden">
           {/* Animated background elements */}

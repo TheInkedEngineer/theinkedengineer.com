@@ -70,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} bg-[#F4D35E] overflow-x-hidden`}>
       <head>
         <meta name="theme-color" content="#F4D35E" />
         <meta name="color-scheme" content="light" />
@@ -78,12 +78,12 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${inter.className} antialiased`}>
-        <div className="scroll-smooth">{children}</div>
+      <body className={`${inter.className} antialiased bg-[#F4D35E] overflow-x-hidden`}>
+        {children}
 
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-4 py-2 rounded-lg z-50"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-4 rounded-lg z-50"
         >
           Skip to main content
         </a>

@@ -17,7 +17,7 @@ export default function HomePage() {
 
   return (
     <>
-      <main id="main-content" className="relative min-h-screen w-full bg-[#F4D35E] overflow-hidden">
+      <main id="main-content" className="relative min-h-[100vh] min-h-[100dvh] w-full bg-[#F4D35E] overflow-hidden">
         {/* Animated Lines Background */}
         <div className="lines" aria-hidden="true">
           <div className="line top"></div>
@@ -26,9 +26,9 @@ export default function HomePage() {
         </div>
 
         {/* Main Content */}
-        <div className="relative z-10 min-h-screen">
+        <div className="relative z-10 min-h-[100vh] min-h-[100dvh]">
           {/* Desktop Layout */}
-          <div className="hidden md:block md:h-screen relative">
+          <div className="hidden md:block md:h-[100vh] md:h-[100dvh] relative">
             {/* Title Section */}
             <div className="absolute top-8 left-8">
               <h1 className="mega-title leading-none">
@@ -63,7 +63,7 @@ export default function HomePage() {
           </div>
 
           {/* Mobile Layout */}
-          <div className="md:hidden min-h-screen relative p-4">
+          <div className="md:hidden min-h-[100vh] min-h-[100dvh] relative p-4">
             {/* Title Section */}
             <div className="absolute top-4 left-4">
               <h1 className="mega-title leading-none">

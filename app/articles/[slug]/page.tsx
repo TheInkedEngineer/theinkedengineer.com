@@ -18,7 +18,7 @@ export default async function ArticlePage({ params }: PageProps) {
   const htmlContent = await markdownToHtml(article.content)
 
   return (
-    <div className="min-h-screen bg-[#F4D35E] pb-20">
+    <div className="min-h-[100vh] min-h-[100dvh] bg-[#F4D35E] pb-20">
       {/* Header */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0">

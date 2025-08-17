@@ -7,7 +7,7 @@ export default function ArticlesPage() {
 
   return (
     <>
-      <main className="min-h-screen bg-[#F4D35E] pb-20">
+      <main className="min-h-[100vh] min-h-[100dvh] bg-[#F4D35E] pb-20">
         {/* Header Section */}
         <div className="relative overflow-hidden">
           {/* Animated background elements */}
