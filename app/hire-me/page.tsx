@@ -102,7 +102,7 @@ export default function HirePage() {
           {/* CV Download Button */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a
-              href="/cv/firas-cv.pdf"
+              href="/curriculum.pdf"
               download
               className="bg-black text-[#F4D35E] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-all duration-300 flex items-center gap-3 group"
             >
@@ -190,7 +190,7 @@ export default function HirePage() {
                 Get In Touch
               </a>
               <a
-                href="https://linkedin.com/in/firasabdulaziz"
+                href="https://linkedin.com/in/theinkedengineer."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border-2 border-black text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-black hover:text-[#F4D35E] transition-all duration-300"
