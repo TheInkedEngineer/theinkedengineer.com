@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Token Driven UI Development",
+    "event": "Pragma Conference 2023",
+    "videoId": "YvAkyiy6B3g",
+    "description": "How to use design tokens as a single source of truth to drive colors, typography, spacing, and components in code; mapping tokens from design tools to Swift/SwiftUI, enabling theming, consistency, and automation across apps."
+  },
+  {
+    "title": "How to bridge the gap between design and development",
+    "event": "Swift Heroes 2023",
+    "videoId": "sqp2E-ouVrQ",
+    "description": "Practical workflows to align designers and engineers: design tokens, shared component libraries, Figma-to-code handoff, automated checks, and collaboration habits that reduce rework and speed up delivery."
+  },
+  {
+    "title": "Roundtable Discussion: From Design to Swift: Best Practices in App Development",
+    "event": "Swift Heroes 2023",
+    "videoId": "Pw9K8HipJI0",
+    "description": "Panel on translating design systems into Swift/SwiftUI: reusable components, accessibility, performance, prototyping, and choosing the right balance between UIKit and SwiftUI in production."
+  },
+  {
+    "title": "Building an opinionated, mockable, async/await network layer",
+    "event": "PLSwift - 2022",
+    "videoId": "sHLoBQ4g24M",
+    "description": "A step‑by‑step implementation of a testable networking stack using async/await: protocols for mocking, dependency injection, request building, error handling, retries, and decoding strategies."
+  },
+  {
+    "title": "Remove your Xcode workspace from Git",
+    "event": "Swift Heroes 2022",
+    "videoId": "Is0--xTq3fk",
+    "description": "Why .xcworkspace doesn’t belong in your repo and how to leverage tools like xcodeproj and Tuist to generate it on the go."
+  },
+  {
+    "title": "Roundtable Discussion: 3rd party tools and frameworks you use in your applications and why",
+    "event": "Swift Heroes 2021",
+    "videoId": "zv5uxUkjfaA",
+    "description": "Panel on evaluating and integrating third‑party libraries: selection criteria, security and maintenance, SPM vs CocoaPods/Carthage, and strategies to avoid vendor lock‑in."
+  }
+]

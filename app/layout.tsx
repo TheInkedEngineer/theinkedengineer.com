@@ -1,4 +1,5 @@
 import type React from "react"
+import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 
@@ -14,7 +15,8 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
 })
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://theinkedengineer.com"),
   title: {
     default: "The Inked Engineer - Firas",
     template: "%s | The Inked Engineer",
@@ -66,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} bg-[#F4D35E] overflow-x-hidden`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} overflow-x-hidden`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
         <meta name="theme-color" content="#F4D35E" />
@@ -77,7 +79,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${inter.className} antialiased bg-[#F4D35E] overflow-x-hidden`}>
+      <body className={`${inter.className} antialiased overflow-x-hidden`}>
         {children}
       </body>
     </html>

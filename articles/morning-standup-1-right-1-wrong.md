@@ -7,7 +7,7 @@ description: 'Do not do something just because agile says you need to do it.'
 # Morning Standup - 1 done right. 1 done awfully wrong.
 
 I want to discuss two morning stand up formats I was part of. 
-One made me feel like everyone NEEDS to have a morning stand up, but the other was one of the reasons [I quit after 3 weeks](/articles/3-weeks-later-i-quit). 
+One made me feel like everyone NEEDS to have a morning stand up, but the other was one of the reasons [I quit after 3 weeks](/insights/3-weeks-later-i-quit). 
 So I decided to write about my experience.
 
 Out of respect for privacy I will not be using the companies’ real names. 

@@ -51,4 +51,4 @@ Analytics is powered by [Plausible](https://plausible.io/).  It's a privacy focu
 
 I host my website on DigitalOcean. Once I run the project, and the static website is generated, I run a small script I wrote, that pushes the changes to my server instantly. 
 
-To learn more on how this is done checkout [this article](../articles/deploy-a-website-using-git/) I wrote.
+To learn more on how this is done checkout [this article](../insights/deploy-a-website-using-git/) I wrote.

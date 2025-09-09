@@ -1,0 +1,84 @@
+{
+  "ios": [
+    {
+      "id": "espresso-martini",
+      "title": "Espresso Martini",
+      "description": "A Vapor-powered, Swift local server. Test your apps with realistic API responses and edge cases.",
+      "tech": ["Swift", "Vapor"],
+      "status": "SDK",
+      "image": "/images/projects/espresso-martini.png",
+      "color": "from-amber-600 to-yellow-500",
+      "year": "2023",
+      "link": "https://github.com/TheInkedEngineer/Espresso-Martini"
+    },
+    {
+      "id": "spritz",
+      "title": "Spritz",
+      "description": "An Italian tax number (AKA Codice Fiscale) creator and validator SDK. Provides algorithm-based tax code generation and validation.",
+      "tech": ["Swift", "Algorithm", "SDK"],
+      "status": "SDK",
+      "image": "/images/projects/spritz.png",
+      "color": "from-green-400 to-blue-500",
+      "year": "2020",
+      "link": "https://github.com/TheInkedEngineer/spritz"
+    },
+    {
+      "id": "mocka",
+      "title": "Mocka",
+      "description": "A Mock Server Made for Developers by Developers. Built with Swift and SwiftUI for macOS, featuring Combine and Vapor integration.",
+      "tech": ["Swift", "SwiftUI", "Vapor"],
+      "status": "Mac Application",
+      "image": "/images/projects/mocka.png",
+      "color": "from-purple-500 to-pink-500",
+      "year": "2022",
+      "link": "https://github.com/wise-emotions/mocka"
+    },
+    {
+      "id": "toosie-slide",
+      "title": "Toosie Slide",
+      "description": "A simple Swift library to generate a carousel-like effect. Provides custom collection view flow layout for iOS applications.",
+      "tech": ["Swift", "UIKit", "SDK"],
+      "status": "SDK",
+      "image": "/images/projects/toosieSlide.png",
+      "color": "from-indigo-500 to-purple-600",
+      "year": "2019",
+      "link": "https://github.com/TheInkedEngineer/ToosieSlide"
+    }
+  ],
+  "web": [
+    {
+      "id": "fattiicazzituoi",
+      "title": "fattiicazzituoi.it",
+      "description": "A SFW generator of ways to say `fatti i cazzi tuoi`.",
+      "tech": ["ViteJS", "Comedy"],
+      "status": "Live",
+      "image": "/images/projects/fct.png",
+      "color": "from-orange-500 to-yellow-700",
+      "year": "2022",
+      "link": "https://fattiicazzituoi.it"
+    },
+    {
+      "id": "giuliagiacone",
+      "title": "GiuliaGiacone.com",
+      "description": "I designed and built a portfolio website for a Milan based stylist. The goal was to build a fun, girly, minimal website.",
+      "tech": ["NextJS"],
+      "status": "Live",
+      "image": "/images/projects/giuliagiacone.png",
+      "color": "from-pink-400 to-purple-500",
+      "year": "2025",
+      "link": "https://giuliagiacone.com"
+    },
+    {
+      "id": "biancabeltramello",
+      "title": "BiancaBeltramello.com",
+      "description": "Modern and stylish portfolio website featuring contemporary design and smooth user experience. Showcases professional work beautifully.",
+      "tech": ["NextJS"],
+      "status": "Live",
+      "image": "/images/projects/biancabeltramello.png",
+      "color": "from-purple-400 to-purple-600",
+      "year": "2024",
+      "link": "https://biancabeltramello.com"
+    }
+  ]
+}
+

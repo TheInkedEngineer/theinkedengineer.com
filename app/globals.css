@@ -103,6 +103,10 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  /* Brand tokens */
+  --color-brand-yellow: var(--yellow);
+  --color-brand-pink: var(--pink);
+  --color-brand-black: var(--black);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -122,20 +126,18 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply bg-[#F4D35E] overflow-x-hidden;
+    /* @apply bg-brand-yellow overflow-x-hidden; */
     height: 100%;
   }
   body {
-    @apply bg-[#F4D35E] text-foreground overflow-x-hidden;
+    @apply bg-brand-yellow text-foreground overflow-x-hidden;
     min-height: 100%;
   }
 
   /* Landing page specific no-scroll class */
   body.no-scroll {
     overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
+    /* Avoid forcing a fixed, viewport-wide composited layer */
     -webkit-overflow-scrolling: touch;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -144,94 +146,14 @@
 
   html:has(body.no-scroll) {
     overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-/* Enhanced mobile-first responsive design with better touch targets and spacing */
-
-/* Animated Lines Styles */
-.lines {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.line {
-  position: absolute;
-  background-color: var(--pink);
-}
-
-/* Mobile Lines (Vertical) - Mobile First Approach */
-.line {
-  width: 16.66vw;
-  transform-origin: top;
-  transform: scaleY(0);
-}
-
-.line.top {
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  animation: slideDownTop 1.5s linear forwards 0s;
-}
-
-.line.middle {
-  bottom: 0;
-  left: 50%;
-  height: 33.33%;
-  animation: slideDownMiddle 0.5s linear forwards 1s;
-}
-
-.line.bottom {
-  bottom: 0;
-  left: 0;
-  height: 66.66%;
-  animation: slideDownBottom 1.0s linear forwards 0.5s;
-}
-
-/* Desktop Lines (Horizontal) - Override for larger screens */
-@media (min-width: 769px) {
-  .line {
-    height: 16.66vh;
-    width: 0;
-    transform: none;
   }
 
-  .line.top {
-    top: 0;
-    left: 0;
-    bottom: auto;
-    right: auto;
-    height: 16.66vh;
-    animation: slideInTop 1.5s linear forwards;
+  /* Hire Me page: make html/body pink only on that route */
+  html:has(#hire-me-page) {
+    @apply bg-brand-pink;
   }
-
-  .line.middle {
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    left: auto;
-    bottom: auto;
-    height: 16.66vh;
-    animation: slideInMiddle 0.5s linear forwards 1s;
-  }
-
-  .line.bottom {
-    bottom: 0;
-    right: 0;
-    left: auto;
-    top: auto;
-    height: 16.66vh;
-    animation: slideInBottom 1s linear forwards 0.5s;
+  body:has(#hire-me-page) {
+    @apply bg-brand-pink text-foreground;
   }
 }
 
@@ -321,7 +243,7 @@
   color: var(--black);
   line-height: 0.85;
   opacity: 0;
-  animation: fadeInLeft 1s ease-out forwards 1.5s;
+  animation: fadeInLeft 1s ease-out forwards 1s;
   /* Mobile-first sizing - slightly bigger on mobile */
   font-size: clamp(3.5rem, 14vw, 6rem);
 }
@@ -329,7 +251,7 @@
 .description {
   color: var(--black);
   opacity: 0;
-  animation: fadeInRight 1s ease-out forwards 1.5s;
+  animation: fadeInRight 1s ease-out forwards 1s;
   /* Mobile-first sizing with better line height */
   font-size: clamp(1.125rem, 4vw, 1.5rem);
   line-height: 1.4;
@@ -494,29 +416,133 @@
   }
 }
 
+/* Multicolor blinking nav dot */
+.nav-dot {
+  animation: navDotBlink 3s ease-in-out infinite;
+}
+
+@keyframes navDotBlink {
+  0% { background-color: var(--pink); transform: translateX(-50%) scale(1); }
+  33% { background-color: var(--yellow); transform: translateX(-50%) scale(1.1); }
+  66% { background-color: var(--black); transform: translateX(-50%) scale(1); }
+  100% { background-color: var(--pink); transform: translateX(-50%) scale(1.1); }
+}
+
+/* Liquid glass navigation styling (SVG displacement variant) */
+.liquid-glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: saturate(150%) blur(16px);
+  backdrop-filter: saturate(150%) blur(16px);
+  box-shadow:
+    /* Reduce outer drop shadow opacity by ~90% */
+    0 10px 24px rgba(0, 0, 0, 0.018),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Dark-gray liquid glass variant for switches */
+.glass-switch {
+  position: relative;
+  background: rgba(34, 34, 34, 0.5);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Utility to remove any box-shadow on demand */
+.no-shadow { box-shadow: none !important; }
+
+.glass-switch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(255,255,255,0) 40%);
+  opacity: 0.7;
+}
+
+/* Inner rim + top glint for thickness */
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.35),
+    inset 0 -2px 6px rgba(0,0,0,0.18);
+}
+
+.liquid-glass::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  border-radius: 50% / 30%;
+  pointer-events: none;
+  background: radial-gradient(60% 40% at 20% 0%, rgba(255,255,255,0.35), rgba(255,255,255,0) 60%);
+  filter: blur(8px);
+  opacity: 0.45;
+}
+
+/* Displacement overlay that gets filtered by SVG */
+.liquid-displace-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+  background:
+    radial-gradient(80% 50% at 20% 0%, rgba(255,255,255,0.6), rgba(255,255,255,0) 60%),
+    radial-gradient(50% 70% at 80% 100%, rgba(255,255,255,0.35), rgba(255,255,255,0) 60%),
+    conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.3), rgba(255,255,255,0) 25%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0) 75%, rgba(255,255,255,0.3) 100%);
+  border-radius: inherit;
+}
+
+/* Backdrop filter fallback (e.g., Firefox without flags) */
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.18);
+  }
+}
+
+/* Reduced motion respects */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-displace-overlay {
+    animation: none !important;
+  }
+}
+
 /* Article content styling */
 .article-content h1 {
-  @apply text-3xl font-black text-black mb-6 mt-8;
+  @apply text-3xl font-black text-brand-black mb-6 mt-8;
 }
 
 .article-content h2 {
-  @apply text-2xl font-bold text-black mb-4 mt-6;
+  @apply text-2xl font-bold text-brand-black mb-4 mt-6;
 }
 
 .article-content h3 {
-  @apply text-xl font-bold text-black mb-3 mt-5;
+  @apply text-xl font-bold text-brand-black mb-3 mt-5;
 }
 
 .article-content h4 {
-  @apply text-lg font-bold text-black mb-2 mt-4;
+  @apply text-lg font-bold text-brand-black mb-2 mt-4;
 }
 
 .article-content h5 {
-  @apply text-base font-bold text-black mb-2 mt-3;
+  @apply text-base font-bold text-brand-black mb-2 mt-3;
 }
 
 .article-content h6 {
-  @apply text-sm font-bold text-black mb-1 mt-2;
+  @apply text-sm font-bold text-brand-black mb-1 mt-2;
 }
 
 .article-content p {
@@ -602,5 +628,5 @@
 }
 
 .article-content a {
-  @apply text-black font-bold underline hover:opacity-80 transition-opacity;
+  @apply text-brand-black font-bold underline hover:opacity-80 transition-opacity;
 }

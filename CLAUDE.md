@@ -64,7 +64,7 @@ app/
 ├── globals.css          # Global styles and CSS variables
 ├── layout.tsx          # Root layout
 ├── page.tsx           # Home page
-├── articles/          # Articles section
+├── insights/          # Insights section
 ├── projects/          # Projects section
 components/
 ├── ui/               # shadcn/ui components

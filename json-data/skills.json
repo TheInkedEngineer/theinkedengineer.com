@@ -1,0 +1,32 @@
+[
+  {
+    "category": "Code Architecture",
+    "items": [
+      "MVVM-C Pattern",
+      "Dependency Injection",
+      "Clean Architecture",
+      "Modular Design",
+      "Protocol-Oriented Programming"
+    ]
+  },
+  {
+    "category": "System Design",
+    "items": [
+      "Scalable Architecture",
+      "Performance Optimization",
+      "Data Flow Design",
+      "API Integration",
+      "Offline-First Design"
+    ]
+  },
+  {
+    "category": "Design Systems",
+    "items": [
+      "Component Libraries",
+      "Design Tokens",
+      "Accessibility Standards",
+      "Cross-Platform Consistency",
+      "Design-Dev Collaboration"
+    ]
+  }
+]

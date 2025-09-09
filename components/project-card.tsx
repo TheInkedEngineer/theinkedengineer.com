@@ -25,7 +25,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <div
-      className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border-4 border-black hover:border-[#F8C0C8]"
+      className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border-4 border-brand-black hover:border-brand-pink"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -39,13 +39,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Animated overlay */}
         <div
-          className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${
+          className={`absolute inset-0 bg-brand-black/20 transition-opacity duration-300 ${
             isHovered ? "opacity-100" : "opacity-0"
           }`}
         />
 
         <div className="absolute top-4 right-4">
-          <span className="px-3 py-1 bg-black/80 text-white text-sm font-bold rounded-full">{project.year}</span>
+          <span className="px-3 py-1 bg-brand-black/80 text-white text-sm font-bold rounded-full">{project.year}</span>
         </div>
 
         <div className="absolute bottom-4 left-4">
@@ -54,7 +54,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               project.status === "Live" || project.status === "Live on App Store"
                 ? "bg-green-500 text-white"
                 : project.status === "In Development" || project.status === "Beta"
-                  ? "bg-yellow-500 text-black"
+                  ? "bg-yellow-500 text-brand-black"
                   : "bg-blue-500 text-white"
             } ${isHovered ? "scale-110" : ""}`}
           >
@@ -65,7 +65,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
       {/* Project Content */}
       <div className="p-8">
-        <h3 className="text-2xl font-black text-black mb-3 group-hover:text-[#F8C0C8] transition-colors">
+        <h3 className="text-2xl font-black text-brand-black mb-3 group-hover:text-brand-pink transition-colors">
           {project.title}
         </h3>
 
@@ -78,7 +78,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               {project.tech.map((tech, techIndex) => (
                 <span
                   key={tech}
-                  className={`px-3 py-1 bg-[#F4D35E] text-black text-sm font-semibold rounded-full transition-all duration-300 ${
+                  className={`px-3 py-1 bg-brand-yellow text-brand-black text-sm font-semibold rounded-full transition-all duration-300 ${
                     isHovered ? "transform scale-105" : ""
                   }`}
                   style={{ transitionDelay: `${techIndex * 50}ms` }}
@@ -90,7 +90,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {/* Desktop/tablet link */}
             <Link
               href={project.link}
-              className="hidden md:inline-flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors"
+              className="hidden md:inline-flex items-center text-brand-black font-bold group-hover:text-brand-pink transition-colors"
               {...(project.link.startsWith("http") && {
                 target: "_blank",
                 rel: "noopener noreferrer",
@@ -120,7 +120,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="md:hidden">
           <Link
             href={project.link}
-            className="inline-flex items-center text-black font-bold group-hover:text-[#F8C0C8] transition-colors"
+            className="inline-flex items-center text-brand-black font-bold group-hover:text-brand-pink transition-colors"
             {...(project.link.startsWith("http") && {
               target: "_blank",
               rel: "noopener noreferrer",

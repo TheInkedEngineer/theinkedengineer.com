@@ -95,13 +95,13 @@ html, body {
 
 /* Desktop line animations */
 .top {
-  animation: slideInTop 1.5s linear forwards;
+  animation: slideInTop 0.9s linear forwards;
 }
 .bottom {
-  animation: slideInBottom 1s linear forwards 0.5s;
+  animation: slideInBottom 0.6s linear forwards 0.2s;
 }
 .middle {
-  animation: slideInMiddle 0.5s linear forwards 1s;
+  animation: slideInMiddle 0.3s linear forwards 0.4s;
 }
 
 /* Foreground Content Container (higher stacking context) */
@@ -124,7 +124,7 @@ html, body {
   white-space: pre-line;
   color: black;
   opacity: 0;
-  animation: fadeInLeft 1s ease-out forwards 1.5s;
+  animation: fadeInLeft 1s ease-out forwards 1s;
 }
 
 /* Description Styling and Animation (fadeInRight) */
@@ -138,7 +138,7 @@ html, body {
   font-size: 54px;
   line-height: normal;
   opacity: 0;
-  animation: fadeInRight 1s ease-out forwards 1.5s;
+  animation: fadeInRight 1s ease-out forwards 1s;
 }
 
 /* Underline links and medium weight for clickable text */
@@ -187,20 +187,20 @@ html, body {
     left: auto;
     top: auto;
     height: 100%;
-    animation: slideDownTop 1.5s linear forwards 0s;
+    animation: slideDownTop 0.9s linear forwards 0s;
   }
   .middle {
     top: auto;
     bottom: 0;
     left: 50%;
     height: 33.33%;
-    animation: slideDownMiddle 0.5s linear forwards 1s;
+    animation: slideDownMiddle 0.3s linear forwards 0.4s;
   }
   .bottom {
     bottom: 0;
     left: 0;
     height: 66.66%;
-    animation: slideDownBottom 1.0s linear forwards 0.5s;
+    animation: slideDownBottom 0.6s linear forwards 0.2s;
   }
   
   /* Keyframes for vertical line animations (drawing from top to bottom) */

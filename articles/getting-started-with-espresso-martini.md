@@ -10,7 +10,7 @@ description: 'Espresso Martini is a Vapor-powered mock server written in Swift f
 
 [`Espresso Martini`](https://github.com/TheInkedEngineer/Espresso-Martini) is the latest project I have been working on. It's a mock server written fully in `Swift` and powered by [Vapor](https://vapor.codes/).
 
-There are many ways to go about mocking data, and each comes with a series of pros and cons. Overriding the [`URLProtocol`](../articles/mocking-requests-using-url-protocol/) is a great way to do it, but is limited to Apple's platforms. Another option is running a local server on your machine using a ready-to-use web server, but that requires you to (probably) deal with Javascript 🫣 and would only work on your simulator, and not your device offline.
+There are many ways to go about mocking data, and each comes with a series of pros and cons. Overriding the [`URLProtocol`](../insights/mocking-requests-using-url-protocol/) is a great way to do it, but is limited to Apple's platforms. Another option is running a local server on your machine using a ready-to-use web server, but that requires you to (probably) deal with Javascript 🫣 and would only work on your simulator, and not your device offline.
 
 Enters `Espresso Martini`. It has the best of both worlds; You can integrate it in your iOS or macOS application using SwiftPackageManager, or run the executable and use it with your web application or android application. It is extremely simple to use, and being written in Swift it offers type-safety and a super easy learning curve so anyone on the team can participate.
 
