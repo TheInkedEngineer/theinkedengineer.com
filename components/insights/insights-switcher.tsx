@@ -5,8 +5,13 @@ import { useState } from "react"
 import { SegmentedSwitch } from "@/components/segmented-switch"
 import { EaseIn } from "@/components/animate/EaseIn"
 import { TiltCard } from "@/components/animate/TiltCard"
+import { Card } from "@/components/ui/card"
+import { spacing, typography } from "@/lib/design-system"
+import { cn } from "@/lib/utils"
+import { Title } from "@/components/ui/title"
 import talks from "@/json-data/talks.json"
 import { LiteYouTube } from "@/components/media/lite-youtube"
+import { getAnimationDelay } from "@/lib/utils"
 
 type Mode = "insights" | "talks"
 type ArticleMetadata = {
@@ -30,7 +35,7 @@ export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) 
   const [playingTalkId, setPlayingTalkId] = useState<string | null>(null)
 
   return (
-    <div className="container mx-auto px-4 md:px-6">
+    <div className={cn(spacing.container)}>
       {/* Toggle */}
       <EaseIn>
         <div className="mb-10 flex justify-center">
@@ -48,10 +53,10 @@ export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) 
       {mode === "insights" ? (
         <div className="grid gap-6 md:gap-8 lg:gap-12">
           {articles.map((article, index) => (
-            <EaseIn key={article.slug} delay={Math.min(index * 40, 160)}>
+            <EaseIn key={article.slug} delay={getAnimationDelay(index, 50, 200)}>
               <Link href={`/insights/${article.slug}`} className="group block">
                 <TiltCard>
-                  <article className="bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 lg:p-12 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 active:scale-98 border-4 border-brand-black hover:border-brand-pink">
+                  <Card variant="default" interactive className="group">
                     <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
                       {/* Article Number */}
                       <div className="flex-shrink-0 self-start md:self-auto">
@@ -69,9 +74,9 @@ export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) 
                           <span className="text-gray-600 text-sm md:text-base">{article.readTime}</span>
                         </div>
 
-                        <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-brand-black mb-3 md:mb-4 group-hover:text-brand-pink transition-colors leading-tight">
+                        <Title as="h2" variant="card" className="text-brand-black group-hover:text-brand-pink transition-colors">
                           {article.title}
-                        </h2>
+                        </Title>
 
                         <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4 md:mb-6 line-clamp-3 md:line-clamp-none">
                           {article.description}
@@ -84,7 +89,7 @@ export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) 
                         </div>
                       </div>
                     </div>
-                  </article>
+                  </Card>
                 </TiltCard>
               </Link>
             </EaseIn>
@@ -93,31 +98,36 @@ export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) 
       ) : (
         <div className="grid lg:grid-cols-2 gap-8">
           {talks.map((talk, index) => (
-            <EaseIn key={talk.title} delay={Math.min(index * 120, 240)}>
-              <TiltCard
-                className="bg-white rounded-3xl overflow-hidden border-4 border-brand-black hover:border-brand-pink transition-colors duration-300 cursor-pointer"
-                onClick={() => setPlayingTalkId(talk.videoId)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault()
-                    setPlayingTalkId(talk.videoId)
-                  }
-                }}
-                aria-label={`Play talk: ${talk.title}`}
-              >
-                <LiteYouTube
-                  videoId={talk.videoId}
-                  title={talk.title}
-                  playing={playingTalkId === talk.videoId}
-                  interactive={false}
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-brand-black mb-2">{talk.title}</h3>
-                  <p className="text-brand-black/80 font-medium mb-3">{talk.event}</p>
-                  <p className="text-brand-black leading-relaxed">{talk.description}</p>
-                </div>
+            <EaseIn key={talk.title} delay={getAnimationDelay(index, 75, 300)}>
+              <TiltCard>
+                <Card
+                  variant="default"
+                  interactive
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setPlayingTalkId(talk.videoId)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault()
+                      setPlayingTalkId(talk.videoId)
+                    }
+                  }}
+                  aria-label={`Play talk: ${talk.title}`}
+                >
+                  <div className="-mx-6 md:-mx-8 lg:-mx-10 -mt-6 md:-mt-8 lg:-mt-10 mb-6 overflow-hidden">
+                    <LiteYouTube
+                      videoId={talk.videoId}
+                      title={talk.title}
+                      playing={playingTalkId === talk.videoId}
+                      interactive={false}
+                    />
+                  </div>
+                  <div>
+                    <Title as="h3" variant="card" className="text-brand-black mb-2">{talk.title}</Title>
+                    <p className="text-brand-black/80 font-medium mb-3">{talk.event}</p>
+                    <p className="text-brand-black leading-relaxed">{talk.description}</p>
+                  </div>
+                </Card>
               </TiltCard>
             </EaseIn>
           ))}

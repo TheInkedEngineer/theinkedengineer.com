@@ -134,20 +134,6 @@
     min-height: 100%;
   }
 
-  /* Landing page specific no-scroll class */
-  body.no-scroll {
-    overflow: hidden;
-    /* Avoid forcing a fixed, viewport-wide composited layer */
-    -webkit-overflow-scrolling: touch;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    overscroll-behavior: none;
-  }
-
-  html:has(body.no-scroll) {
-    overflow: hidden;
-  }
-
   /* Hire Me page: make html/body pink only on that route */
   html:has(#hire-me-page) {
     @apply bg-brand-pink;

@@ -1,30 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { Navigation } from "@/components/navigation"
-
 export default function HomePage() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-    // Only prevent scroll on desktop where layout is fixed
-    const isDesktop = typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
-    if (isDesktop) {
-      document.body.classList.add('no-scroll')
-    }
-    // Cleanup: always remove if present
-    return () => {
-      document.body.classList.remove('no-scroll')
-    }
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
 
   return (
-    <main id="main-content" className="relative md:fixed md:inset-0 w-full md:h-full min-h-screen bg-brand-yellow overflow-x-hidden md:overflow-hidden">
+    <main id="main-content" className="relative md:fixed md:inset-0 w-full min-h-screen bg-brand-yellow overflow-x-hidden">
       {/* Geometric Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         <div className="absolute top-24 left-0 w-28 h-28 bg-brand-pink rounded-full opacity-70 motion-safe:animate-pulse"></div>
@@ -33,42 +12,39 @@ export default function HomePage() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 h-full">
+      <div className="relative z-10">
         {/* Desktop Layout */}
-        <div className="hidden md:block h-full relative p-8">
+        <div className="hidden md:block relative p-8">
           <div className="absolute inset-0 p-8">
             <p
-              className="text-brand-black font-extrabold uppercase leading-[0.9] text-[10vw] break-words"
+              className="text-brand-black font-black uppercase leading-none text-[10vw] break-words"
               style={{ overflowWrap: 'anywhere' }}
             >
-              <span className="opacity-50">HELLOIAM</span>
+              <span className="opacity-70">HELLOIAM</span>
               <a href="https://linkedin.com/in/theinkedengineer" className="opacity-100" target="_blank">FIRAS</a>
-              <span className="opacity-50">CHECKOUTTHE</span>
+              <span className="opacity-70">CHECKOUTTHE</span>
               <a href="/projects" className="opacity-100">PROJECTS</a>
-              <span className="opacity-50">IBUILTTHE</span>
+              <span className="opacity-70">IBUILTTHE</span>
               <a href="/insights" className="opacity-100">INSIGHTS</a>
-              <span className="opacity-50">ISHAREOR</span>
+              <span className="opacity-70">ISHAREOR</span>
               <a href="/hire-me" className="opacity-100">HIREME</a>
-              <span className="opacity-50">TOBUILDAMAZINGTHINGS</span>
+              <span className="opacity-70">TOBUILDAMAZINGTHINGS</span>
             </p>
           </div>
         </div>
 
         {/* Mobile Layout - Brutalist full-page text with large type and scrolling */}
-        <div
-          className="md:hidden relative p-6 mb-8"
-          style={{ paddingBottom: 'calc(env(safe-area-inset-bottom, 0px) + 96px)' }}
-        >
-          <p className="text-brand-black font-extrabold uppercase leading-[0.9] text-[18vw] break-words" style={{ overflowWrap: 'anywhere' }}>
-            <span className="opacity-24">HELLOIAM</span>
+        <div className="md:hidden relative p-6 mb-8">
+          <p className="text-brand-black font-black uppercase leading-[0.9] text-[18vw] break-words" style={{ overflowWrap: 'anywhere' }}>
+            <span className="opacity-30">HELLOIAM</span>
             <a href="https://linkedin.com/in/theinkedengineer" className="opacity-100">FIRAS</a>
-            <span className="opacity-24">CHECKOUTTHE</span>
+            <span className="opacity-30">CHECKOUTTHE</span>
             <a href="/projects" className="opacity-100">PROJECTS</a>
-            <span className="opacity-24">IBUILTTHE</span>
+            <span className="opacity-30">IBUILTTHE</span>
             <a href="/insights" className="opacity-100">INSIGHTS</a>
-            <span className="opacity-24 ">ISHAREOR</span>
+            <span className="opacity-30 ">ISHAREOR</span>
             <a href="/hire-me" className="opacity-100">HIREME</a>
-            <span className="opacity-24 ">TOBUILDAMAZINGTHINGS</span>
+            <span className="opacity-30 ">TOBUILDAMAZINGTHINGS</span>
           </p>
         </div>
       </div>

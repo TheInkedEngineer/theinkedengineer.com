@@ -1,92 +1,34 @@
-import * as React from "react"
+"use client"
 
+import * as React from "react"
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card"
-      className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
-        className
-      )}
-      {...props}
-    />
-  )
+type CardVariant = "default" | "compact" | "hero"
+
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: CardVariant
+  interactive?: boolean
 }
 
-function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-header"
-      className={cn(
-        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
-        className
-      )}
-      {...props}
-    />
-  )
-}
+export const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, children, variant = "default", interactive = false, ...props }, ref) => {
+    const base = "rounded-2xl md:rounded-3xl border-4 border-brand-black hover:border-brand-pink bg-white shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300"
+    const padding =
+      variant === "compact"
+        ? "p-4 md:p-6"
+        : variant === "hero"
+          ? "p-8 md:p-12"
+          : "p-6 md:p-8 lg:p-10"
+    const heroExtras = variant === "hero" ? "bg-brand-black text-white" : ""
+    const motion = interactive ? "transform hover:-translate-y-2 cursor-pointer" : ""
 
-function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-title"
-      className={cn("leading-none font-semibold", className)}
-      {...props}
-    />
-  )
-}
+    return (
+      <div ref={ref} className={cn(base, padding, heroExtras, motion, className)} {...props}>
+        {children}
+      </div>
+    )
+  }
+)
 
-function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-description"
-      className={cn("text-muted-foreground text-sm", className)}
-      {...props}
-    />
-  )
-}
+Card.displayName = "Card"
 
-function CardAction({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-action"
-      className={cn(
-        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function CardContent({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-content"
-      className={cn("px-6", className)}
-      {...props}
-    />
-  )
-}
-
-function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="card-footer"
-      className={cn("flex items-center px-6 [.border-t]:pt-6", className)}
-      {...props}
-    />
-  )
-}
-
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
-}

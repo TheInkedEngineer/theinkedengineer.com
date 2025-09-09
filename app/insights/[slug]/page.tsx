@@ -4,6 +4,10 @@ import ArticleActions from "@/components/article-actions"
 import { notFound } from "next/navigation"
 import { getArticleBySlug, markdownToHtml, formatDate } from "@/lib/markdown"
 import { EaseIn } from "@/components/animate/EaseIn"
+import { Card } from "@/components/ui/card"
+import { Title } from "@/components/ui/title"
+import { typography, spacing } from "@/lib/design-system"
+import { cn } from "@/lib/utils"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -28,7 +32,7 @@ export default async function ArticlePage({ params }: PageProps) {
           <div className="absolute top-32 left-0 w-1/3 h-32 bg-brand-pink transform -rotate-12 -translate-x-16"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 py-12">
+        <div className={cn("relative z-10", spacing.container, spacing.section)}>
           <EaseIn y={10} duration={450}>
             <Link
               href="/insights"
@@ -48,7 +52,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 <span className="text-brand-black">{article.readTime}</span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-black text-brand-black leading-tight">{article.title}</h1>
+              <Title as="h1">{article.title}</Title>
             </div>
           </EaseIn>
       </div>
@@ -58,14 +62,14 @@ export default async function ArticlePage({ params }: PageProps) {
     <ArticleActions />
 
     {/* Article Content */}
-    <div className="container mx-auto px-6">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <EaseIn y={16} duration={560} delay={120}>
         <div className="mx-auto">
-          <article className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-brand-black">
+          <Card variant="default">
             <div className="prose prose-lg max-w-none">
               <div className="article-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
             </div>
-          </article>
+          </Card>
         </div>
       </EaseIn>
     </div>

@@ -2,6 +2,11 @@ import { Navigation } from "@/components/navigation"
 import { ArrowDownIcon } from "lucide-react"
 import { EaseIn } from "@/components/animate/EaseIn"
 import { TiltCard } from "@/components/animate/TiltCard"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Title } from "@/components/ui/title"
+import { typography, spacing } from "@/lib/design-system"
+import { cn } from "@/lib/utils"
 import skills from "@/json-data/skills.json"
 
 export const metadata = {
@@ -29,20 +34,20 @@ export default function HirePage() {
 
       <Navigation />
 
-      <main className="relative z-10 px-4 py-20">
+      <main className="relative z-10">
         {/* Hero Section */}
-        <section className="max-w-6xl mx-auto text-center mb-20">
+        <section className={cn(spacing.container, spacing.section, "text-center") }>
           <EaseIn>
-            <h1 className="text-6xl md:text-8xl font-black text-brand-black mb-8 leading-none">
+            <Title as="h1" margin="lg" className="leading-none">
               LET'S BUILD
               <br />
               SOMETHING
               <br />
               <span className="text-brand-black underline decoration-brand-black decoration-4 underline-offset-8">AMAZING</span>
-            </h1>
+            </Title>
           </EaseIn>
           <EaseIn delay={100}>
-            <p className="text-xl md:text-2xl text-brand-black max-w-3xl mx-auto mb-12 leading-relaxed">
+            <p className={cn(typography.subtitle, "text-brand-black max-w-3xl mx-auto mb-12") }>
               Staff iOS Engineer with 10+ years crafting scalable architectures, elegant design systems, and
               high-performance mobile experiences.
             </p>
@@ -51,39 +56,41 @@ export default function HirePage() {
           {/* CV Download Button */}
           <EaseIn delay={200}>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a
-                href="/curriculum.pdf"
-                download
-                className="bg-brand-yellow text-brand-black px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-black hover:text-brand-yellow transition-colors duration-300 flex items-center gap-3 group"
-              >
+              <Button href="/curriculum.pdf" download variant="primary" size="lg" className="group">
                 <ArrowDownIcon className="w-5 h-5 group-hover:animate-bounce" />
                 Download CV
-              </a>
+              </Button>
             </div>
           </EaseIn>
         </section>
 
         {/* Skills Overview */}
-        <section className="max-w-6xl mx-auto mb-20">
+        <section className={cn(spacing.container, spacing.section)}>
           <EaseIn>
-            <h2 className="text-4xl md:text-6xl font-black text-brand-black mb-12 text-center">WHAT I BRING</h2>
+            <Title as="h2" align="center" margin="xl">WHAT I BRING</Title>
           </EaseIn>
 
           <div className="grid md:grid-cols-3 gap-8">
             {skills.map((skillGroup, index) => (
               <EaseIn key={skillGroup.category} delay={index * 100}>
-                <TiltCard className="bg-brand-black rounded-3xl p-8 transition-colors duration-300">
-                  <h3 className="text-2xl font-bold text-brand-yellow mb-6 underline decoration-brand-yellow decoration-4 underline-offset-4">
-                    {skillGroup.category}
-                  </h3>
-                  <ul className="space-y-3">
-                    {skillGroup.items.map((skill, skillIndex) => (
-                      <li key={skillIndex} className="text-brand-yellow font-medium flex items-center gap-3">
-                        <div className="w-2 h-2 bg-brand-yellow rounded-full"></div>
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
+                <TiltCard>
+                  <Card className="bg-brand-black" variant="default">
+                    <Title
+                      as="h3"
+                      variant="card"
+                      className="text-brand-yellow mb-6 underline decoration-brand-yellow decoration-4 underline-offset-4"
+                    >
+                      {skillGroup.category}
+                    </Title>
+                    <ul className="space-y-3">
+                      {skillGroup.items.map((skill, skillIndex) => (
+                        <li key={skillIndex} className="text-brand-yellow font-medium flex items-center gap-3">
+                          <div className="w-2 h-2 bg-brand-yellow rounded-full"></div>
+                          {skill}
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
                 </TiltCard>
               </EaseIn>
             ))}
@@ -93,22 +100,19 @@ export default function HirePage() {
         
 
         {/* Call to Action */}
-        <section className="max-w-4xl mx-auto text-center mb-20">
+        <section className={cn(spacing.container, spacing.section, "text-center") }>
           <EaseIn>
             <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-12">
-              <h2 className="text-4xl md:text-5xl font-black text-brand-black mb-6">READY TO COLLABORATE?</h2>
+              <Title as="h2">READY TO COLLABORATE?</Title>
               <p className="text-xl text-brand-black mb-8 leading-relaxed">
                 Whether you need architectural guidance, system design expertise, or a complete iOS solution, I'm here to
                 help bring your vision to life.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="mailto:firas@theinkedengineer.com"
-                  className="bg-brand-yellow text-brand-black px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-black hover:text-brand-yellow transition-colors"
-                >
+                <Button href="mailto:firas@theinkedengineer.com" variant="primary" size="lg">
                   Get In Touch
-                </a>
+                </Button>
               </div>
             </div>
           </EaseIn>

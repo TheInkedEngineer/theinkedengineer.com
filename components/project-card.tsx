@@ -2,6 +2,11 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { typography } from "@/lib/design-system"
+import { cn } from "@/lib/utils"
+import { Badge } from "@/components/ui/badge"
+import { Title } from "@/components/ui/title"
+import { Card } from "@/components/ui/card"
 
 interface Project {
   id: string
@@ -24,13 +29,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div
-      className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border-4 border-brand-black hover:border-brand-pink"
+    <Card
+      variant="default"
+      interactive
+      className="group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Project Image */}
-      <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
+      {/* Project Image (edge-to-edge) */}
+      <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden -mx-6 md:-mx-8 lg:-mx-10 -mt-6 md:-mt-8 lg:-mt-10 mb-6`}>
         <img
           src={project.image || "/placeholder.svg"}
           alt={project.title}
@@ -52,10 +59,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <span
             className={`px-3 py-1 text-xs font-bold rounded-full transition-all duration-300 ${
               project.status === "Live" || project.status === "Live on App Store"
-                ? "bg-green-500 text-white"
+                ? "bg-brand-black text-brand-yellow"
                 : project.status === "In Development" || project.status === "Beta"
-                  ? "bg-yellow-500 text-brand-black"
-                  : "bg-blue-500 text-white"
+                  ? "bg-brand-yellow text-brand-black"
+                  : project.status === "Inactive"
+                    ? "bg-gray-200 text-gray-700"
+                    : "bg-brand-pink text-brand-black"
             } ${isHovered ? "scale-110" : ""}`}
           >
             {project.status}
@@ -64,10 +73,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       </div>
 
       {/* Project Content */}
-      <div className="p-8">
-        <h3 className="text-2xl font-black text-brand-black mb-3 group-hover:text-brand-pink transition-colors">
+      <div>
+        <Title as="h3" variant="card" className="text-brand-black group-hover:text-brand-pink transition-colors">
           {project.title}
-        </h3>
+        </Title>
 
         <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
 
@@ -75,17 +84,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="mb-6">
           <div className="flex items-center justify-between gap-4">
             <div className="flex flex-wrap gap-2">
-              {project.tech.map((tech, techIndex) => (
-                <span
-                  key={tech}
-                  className={`px-3 py-1 bg-brand-yellow text-brand-black text-sm font-semibold rounded-full transition-all duration-300 ${
-                    isHovered ? "transform scale-105" : ""
-                  }`}
-                  style={{ transitionDelay: `${techIndex * 50}ms` }}
-                >
-                  {tech}
-                </span>
-              ))}
+            {project.tech.map((tech, techIndex) => (
+              <Badge
+                key={tech}
+                className={`${isHovered ? "transform scale-105" : ""}`}
+                style={{ transitionDelay: `${techIndex * 50}ms` }}
+              >
+                {tech}
+              </Badge>
+            ))}
             </div>
             {/* Desktop/tablet link */}
             <Link
@@ -145,6 +152,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </Link>
         </div>
       </div>
-    </div>
+    </Card>
   )
 }

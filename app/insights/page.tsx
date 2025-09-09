@@ -2,6 +2,9 @@ import { Navigation } from "@/components/navigation"
 import { getAllArticles } from "@/lib/markdown"
 import { EaseIn } from "@/components/animate/EaseIn"
 import { InsightsSwitcher } from "@/components/insights/insights-switcher"
+import { Title } from "@/components/ui/title"
+import { typography, spacing } from "@/lib/design-system"
+import { cn } from "@/lib/utils"
 
 export default function InsightsPage() {
   const articles = getAllArticles()
@@ -17,17 +20,17 @@ export default function InsightsPage() {
             <div className="absolute top-20 left-0 w-1/4 h-24 bg-brand-pink transform -rotate-6 -translate-x-8"></div>
           </div>
 
-          <div className="relative z-10 container mx-auto px-4 md:px-6 py-12 md:py-16">
+          <div className={cn("relative z-10", spacing.container, spacing.section)}>
             <div className="max-w-4xl">
               <EaseIn>
-                <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-brand-black leading-none mb-4 md:mb-6">
+                <Title as="h1">
                   KNOWLEDGE
                   <br />
                   TO SHARE
-                </h1>
+                </Title>
               </EaseIn>
               <EaseIn delay={100}>
-                <p className="text-lg sm:text-xl md:text-2xl text-brand-black font-medium max-w-2xl leading-relaxed">
+                <p className={cn(typography.subtitle, "text-brand-black max-w-2xl") }>
                   Technical articles, thoughts, and experiences from building things with code.
                 </p>
               </EaseIn>

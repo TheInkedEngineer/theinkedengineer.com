@@ -5,8 +5,14 @@ import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { EaseIn } from "@/components/animate/EaseIn"
 import { TiltCard } from "@/components/animate/TiltCard"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Title } from "@/components/ui/title"
 import projects from "@/json-data/projects.json"
 import { SegmentedSwitch } from "@/components/segmented-switch"
+import { getAnimationDelay, cn } from "@/lib/utils"
+import { typography, spacing } from "@/lib/design-system"
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<"ios" | "web">("ios")
@@ -23,17 +29,17 @@ export default function ProjectsPage() {
             <div className="absolute bottom-0 left-0 w-1/5 h-24 bg-brand-pink transform rotate-12 -translate-x-8"></div>
           </div>
 
-          <div className="relative z-10 container mx-auto px-6 py-16">
+          <div className={cn("relative z-10", spacing.container, spacing.section)}>
             <div className="max-w-4xl">
               <EaseIn>
-                <h1 className="text-6xl md:text-8xl font-black text-brand-black leading-none mb-6">
+                <Title as="h1">
                   THINGS I
                   <br />
                   BUILT
-                </h1>
+                </Title>
               </EaseIn>
               <EaseIn delay={100}>
-                <p className="text-xl md:text-2xl text-brand-black font-medium max-w-2xl">
+                <p className={cn(typography.subtitle, "text-brand-black max-w-2xl") }>
                   From Apple platform applications and SDKs that delight users to Web applications and portoflios.
                 </p>
               </EaseIn>
@@ -42,7 +48,7 @@ export default function ProjectsPage() {
         </header>
 
         {/* Category Toggle */}
-        <div className="container mx-auto px-6 mb-12">
+        <div className={cn(spacing.container, "mb-12")}>
           <EaseIn>
             <div className="flex justify-center">
               <SegmentedSwitch
@@ -58,48 +64,50 @@ export default function ProjectsPage() {
         </div>
 
         {/* Projects Grid */}
-        <div className="container mx-auto px-6">
+        <div className={cn(spacing.container)}>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
             {projects[activeCategory].map((project, index) => (
-              <EaseIn key={project.id} delay={Math.min(index * 60, 180)}>
-                <TiltCard className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-4 border-brand-black hover:border-brand-pink">
+              <EaseIn key={project.id} delay={getAnimationDelay(index, 75, 300)}>
+                <TiltCard>
                   <a
                     href={project.link}
                     className="block"
                     {...(project.link.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
                   >
-                    {/* Project Image */}
-                    <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden`}>
-                      <img
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        className="w-full h-full object-cover mix-blend-overlay opacity-80"
-                      />
-                      <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-brand-black/80 text-white text-sm font-bold rounded-full">
-                          {project.year}
-                        </span>
+                    <Card variant="default" interactive className="group">
+                      {/* Project Image (edge-to-edge inside padded card) */}
+                      <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden -mx-6 md:-mx-8 lg:-mx-10 -mt-6 md:-mt-8 lg:-mt-10 mb-6`}>
+                        <img
+                          src={project.image || "/placeholder.svg"}
+                          alt={project.title}
+                          className="w-full h-full object-cover mix-blend-overlay opacity-80"
+                        />
+                        <div className="absolute top-4 right-4">
+                          <span className="px-3 py-1 bg-brand-black/80 text-white text-sm font-bold rounded-full">
+                            {project.year}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-4 left-4">
+                          <span
+                            className={`px-3 py-1 text-xs font-bold rounded-full ${
+                              project.status === "Live" || project.status === "Live on App Store"
+                                ? "bg-brand-black text-brand-yellow"
+                                : project.status === "In Development" || project.status === "Beta"
+                                  ? "bg-brand-yellow text-brand-black"
+                                  : project.status === "Inactive"
+                                    ? "bg-gray-200 text-gray-700"
+                                    : "bg-brand-pink text-brand-black"
+                            }`}
+                          >
+                            {project.status}
+                          </span>
+                        </div>
                       </div>
-                      <div className="absolute bottom-4 left-4">
-                        <span
-                          className={`px-3 py-1 text-xs font-bold rounded-full ${
-                            project.status === "Live" || project.status === "Live on App Store"
-                              ? "bg-green-500 text-white"
-                              : project.status === "In Development" || project.status === "Beta"
-                                ? "bg-yellow-500 text-black"
-                                : "bg-blue-500 text-white"
-                          }`}
-                        >
-                          {project.status}
-                        </span>
-                      </div>
-                    </div>
 
-                    {/* Project Content */}
-                    <div className="p-8">
-                      <h3 className="text-2xl font-black text-brand-black mb-3 group-hover:text-brand-pink transition-colors">
+                      {/* Project Content */}
+                      <Title as="h3" variant="card" className="text-brand-black group-hover:text-brand-pink transition-colors">
                         {project.title}
-                      </h3>
+                      </Title>
 
                       <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
 
@@ -108,9 +116,7 @@ export default function ProjectsPage() {
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex flex-wrap gap-2">
                             {project.tech.map((tech) => (
-                              <span key={tech} className="px-3 py-1 bg-brand-yellow text-brand-black text-sm font-semibold rounded-full">
-                                {tech}
-                              </span>
+                              <Badge key={tech}>{tech}</Badge>
                             ))}
                           </div>
                           {/* Desktop/tablet CTA label (non-link; whole card is clickable) */}
@@ -150,7 +156,7 @@ export default function ProjectsPage() {
                           />
                         </svg>
                       </div>
-                    </div>
+                    </Card>
                   </a>
                 </TiltCard>
               </EaseIn>
@@ -160,21 +166,20 @@ export default function ProjectsPage() {
           {/* Call to Action */}
           <div className="mt-16 text-center">
             <EaseIn>
-              <div className="bg-brand-black rounded-3xl p-12 border-4 border-brand-pink">
-                <h2 className="text-3xl md:text-4xl font-black text-white mb-4">Got an idea?</h2>
+              <Card variant="hero">
+                <Title as="h2" color="white" margin="sm">Got an idea?</Title>
                 <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
                   I'm always excited to work on new projects and collaborate with creative minds.
                 </p>
-                <Link
-                  href="/hire-me"
-                  className="inline-flex items-center px-8 py-4 bg-brand-yellow text-brand-black font-bold rounded-full hover:bg-brand-pink transition-all duration-300 transform hover:scale-105"
-                >
-                  <span className="mr-2">Let's build something amazing</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+                <Link href="/hire-me">
+                  <Button variant="primary" size="lg">
+                    <span>Let's build something amazing</span>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Button>
                 </Link>
-              </div>
+              </Card>
             </EaseIn>
           </div>
         </div>
