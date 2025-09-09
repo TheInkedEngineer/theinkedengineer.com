@@ -10,8 +10,8 @@ export function Navigation() {
 
   const navItems: NavItem[] = [
     { href: "/", label: "home"},
-    { href: "/insights", label: "insights"},
     { href: "/projects", label: "projects"},
+    { href: "/insights", label: "insights"},
     { href: "/hire-me", label: "hire me"},
   ]
 
