@@ -16,6 +16,10 @@ import { typography, spacing } from "@/lib/design-system"
 
 export default function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<"ios" | "web">("ios")
+  const subtitle =
+    activeCategory === "ios"
+      ? "Swift-crafted apps and SDKs for Apple platforms—performance with polish."
+      : "Modern web apps and playful frontends—pixels with purpose."
 
   return (
     <>
@@ -39,9 +43,7 @@ export default function ProjectsPage() {
                 </Title>
               </EaseIn>
               <EaseIn delay={100}>
-                <p className={cn(typography.subtitle, "text-brand-black max-w-2xl") }>
-                  From Apple platform applications and SDKs that delight users to Web applications and portoflios.
-                </p>
+                <p className={cn(typography.subtitle, "text-brand-black max-w-2xl")}>{subtitle}</p>
               </EaseIn>
             </div>
           </div>

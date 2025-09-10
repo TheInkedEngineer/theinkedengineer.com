@@ -13,7 +13,7 @@ import talks from "@/json-data/talks.json"
 import { LiteYouTube } from "@/components/media/lite-youtube"
 import { getAnimationDelay } from "@/lib/utils"
 
-type Mode = "insights" | "talks"
+export type Mode = "articles" | "talks"
 type ArticleMetadata = {
   slug: string
   title: string
@@ -29,8 +29,16 @@ function formatDate(dateString: string): string {
   return `${month}.${year}`
 }
 
-export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) {
-  const [mode, setMode] = useState<Mode>("insights")
+type InsightsSwitcherProps = {
+  articles: ArticleMetadata[]
+  mode?: Mode
+  onModeChange?: (mode: Mode) => void
+}
+
+export function InsightsSwitcher({ articles, mode: controlledMode, onModeChange }: InsightsSwitcherProps) {
+  const [uncontrolledMode, setUncontrolledMode] = useState<Mode>("articles")
+  const mode = controlledMode ?? uncontrolledMode
+  const setMode = onModeChange ?? setUncontrolledMode
 
   const [playingTalkId, setPlayingTalkId] = useState<string | null>(null)
 
@@ -41,7 +49,7 @@ export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) 
         <div className="mb-10 flex justify-center">
           <SegmentedSwitch
             options={[
-              { label: "Insights", value: "insights" },
+              { label: "Articles", value: "articles" },
               { label: "Talks", value: "talks" },
             ]}
             value={mode}
@@ -50,7 +58,7 @@ export function InsightsSwitcher({ articles }: { articles: ArticleMetadata[] }) 
         </div>
       </EaseIn>
 
-      {mode === "insights" ? (
+      {mode === "articles" ? (
         <div className="grid gap-6 md:gap-8 lg:gap-12">
           {articles.map((article, index) => (
             <EaseIn key={article.slug} delay={getAnimationDelay(index, 50, 200)}>

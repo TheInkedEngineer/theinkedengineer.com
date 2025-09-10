@@ -20,15 +20,15 @@ export default function HomePage() {
               className="text-brand-black font-black uppercase leading-none text-[10vw] break-words"
               style={{ overflowWrap: 'anywhere' }}
             >
-              <span className="opacity-70">HELLOIAM</span>
+              <span className="opacity-50">HELLOIAM</span>
               <a href="https://linkedin.com/in/theinkedengineer" className="opacity-100" target="_blank">FIRAS</a>
-              <span className="opacity-70">CHECKOUTTHE</span>
+              <span className="opacity-50">CHECKOUTTHE</span>
               <a href="/projects" className="opacity-100">PROJECTS</a>
-              <span className="opacity-70">IBUILTTHE</span>
+              <span className="opacity-50">IBUILTTHE</span>
               <a href="/insights" className="opacity-100">INSIGHTS</a>
-              <span className="opacity-70">ISHAREOR</span>
+              <span className="opacity-50">ISHAREOR</span>
               <a href="/hire-me" className="opacity-100">HIREME</a>
-              <span className="opacity-70">TOBUILDAMAZINGTHINGS</span>
+              <span className="opacity-50">TOBUILDAMAZINGTHINGS</span>
             </p>
           </div>
         </div>

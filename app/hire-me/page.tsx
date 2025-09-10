@@ -38,18 +38,16 @@ export default function HirePage() {
         {/* Hero Section */}
         <section className={cn(spacing.container, spacing.section, "text-center") }>
           <EaseIn>
-            <Title as="h1" margin="lg" className="leading-none">
-              LET'S BUILD
+            <Title as="h1" align="center" margin="lg" className="leading-none">
+              LET'S BUILD SOMETHING
               <br />
-              SOMETHING
-              <br />
-              <span className="text-brand-black underline decoration-brand-black decoration-4 underline-offset-8">AMAZING</span>
+              <span className="text-brand-black text-[18vw] md:text-[14vw] lg:text-[10vw] underline decoration-brand-black decoration-4 underline-offset-8">AMAZING</span>
             </Title>
           </EaseIn>
           <EaseIn delay={100}>
-            <p className={cn(typography.subtitle, "text-brand-black max-w-3xl mx-auto mb-12") }>
-              Staff iOS Engineer with 10+ years crafting scalable architectures, elegant design systems, and
-              high-performance mobile experiences.
+            <p className={cn(typography.subtitle, "text-brand-black mx-auto mb-12") }>
+              Software Engineer with 10+ years of experience building scalable mobile architectures, elegant design systems, and high-performance mobile applications. 
+              Currently a Staff iOS Engineer specializing in mobility and fintech, while also crafting websites and AI-driven bots on the side — always with a strong focus on intuitive UI/UX design.
             </p>
           </EaseIn>
 
