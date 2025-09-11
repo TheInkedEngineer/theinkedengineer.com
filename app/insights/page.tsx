@@ -1,3 +1,4 @@
+import { Suspense } from "react"
 import { Navigation } from "@/components/navigation"
 import { getAllArticles } from "@/lib/markdown"
 import { InsightsPageClient } from "@/components/insights/insights-page-client"
@@ -8,7 +9,9 @@ export default function InsightsPage() {
   return (
     <>
       <main className="min-h-[100vh] min-h-[100dvh] bg-brand-yellow pb-20">
-        <InsightsPageClient articles={articles} />
+        <Suspense fallback={null}>
+          <InsightsPageClient articles={articles} />
+        </Suspense>
       </main>
 
       <Navigation />
