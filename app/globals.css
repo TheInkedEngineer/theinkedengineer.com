@@ -2,6 +2,17 @@
 @import "tw-animate-css";
 @import "highlight.js/styles/github-dark.css";
 
+/* Delight font family (served from /public/fonts) */
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-thin.otf') format('opentype'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-extralight.otf') format('opentype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-semibold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-extrabold.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Delight'; src: url('/fonts/delight-black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+
 /* Custom CSS Variables */
 :root {
   --yellow: #f4d35e;
@@ -131,6 +142,7 @@
   }
   body {
     @apply bg-brand-yellow text-foreground overflow-x-hidden;
+    font-family: 'Delight', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
     min-height: 100%;
   }
 
@@ -224,7 +236,7 @@
 
 /* Improved mobile-first typography with better scaling and readability */
 .mega-title {
-  font-family: "Inter", sans-serif;
+  font-family: 'Delight', sans-serif;
   font-weight: 900;
   color: var(--black);
   line-height: 0.85;
@@ -546,7 +558,7 @@
 
 /* Inline code styling */
 .article-content code:not(pre code) {
-  @apply px-2 py-1 rounded font-mono text-sm;
+  @apply px-2 py-1 rounded text-sm;
   background-color: var(--yellow);
   color: #000;
 }
@@ -559,7 +571,7 @@
 }
 
 .article-content pre code {
-  @apply font-mono text-sm;
+  @apply text-sm;
   background: transparent !important;
   padding: 0 !important;
   border-radius: 0 !important;
