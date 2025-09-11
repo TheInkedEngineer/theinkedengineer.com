@@ -25,7 +25,7 @@ export function SegmentedSwitch({ options, value, onChange, className = "" }: Se
           <button
             key={opt.value}
             onClick={() => onChange(opt.value)}
-            className={`relative z-10 px-8 py-4 font-bold rounded-lg transition-colors duration-200 ${
+            className={`relative z-10 px-2 py-4 inline-flex items-center justify-center font-bold rounded-lg transition-colors duration-200 text-[clamp(12px,2.8vw,16px)] leading-tight ${
               isActive ? "text-brand-black" : "text-white hover:text-brand-yellow"
             }`}
           >
@@ -138,4 +138,3 @@ function SelectionHighlight({ activeIndex }: { activeIndex: number }) {
     />
   )
 }
-
