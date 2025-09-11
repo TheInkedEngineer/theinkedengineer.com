@@ -33,7 +33,7 @@ export function ProjectsPageClient() {
   const subtitle =
     activeCategory === "ios"
       ? "Swift-crafted apps and SDKs for Apple platforms—performance with polish."
-      : "Modern web apps and playful frontends—pixels with purpose."
+      : "Modern web applications and playful frontends—pixels with purpose."
 
   return (
     <main className="min-h-[100vh] min-h-[100dvh] bg-brand-yellow pb-20">
