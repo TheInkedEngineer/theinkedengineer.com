@@ -1,13 +1,12 @@
 import { Navigation } from "@/components/navigation"
 import { ArrowDownIcon } from "lucide-react"
 import { EaseIn } from "@/components/animate/EaseIn"
-import { TiltCard } from "@/components/animate/TiltCard"
-import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Title } from "@/components/ui/title"
 import { typography, spacing } from "@/lib/design-system"
 import { cn } from "@/lib/utils"
 import skills from "@/json-data/skills.json"
+import { WhatIBring } from "@/components/hire/what-i-bring"
 
 export const metadata = {
   title: "Hire Me - Firas | Staff iOS Engineer",
@@ -62,53 +61,22 @@ export default function HirePage() {
           </EaseIn>
         </section>
 
-        {/* Skills Overview */}
-        <section className={cn(spacing.container, spacing.section)}>
-          <EaseIn>
-            <Title as="h2" align="center" margin="xl">WHAT I BRING</Title>
-          </EaseIn>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {skills.map((skillGroup, index) => (
-              <EaseIn key={skillGroup.category} delay={index * 100}>
-                <TiltCard>
-                  <Card className="bg-brand-black" variant="default">
-                    <Title
-                      as="h3"
-                      variant="card"
-                      className="text-brand-yellow mb-6 underline decoration-brand-yellow decoration-4 underline-offset-4"
-                    >
-                      {skillGroup.category}
-                    </Title>
-                    <ul className="space-y-3">
-                      {skillGroup.items.map((skill, skillIndex) => (
-                        <li key={skillIndex} className="text-brand-yellow font-medium flex items-center gap-3">
-                          <div className="w-2 h-2 bg-brand-yellow rounded-full"></div>
-                          {skill}
-                        </li>
-                      ))}
-                    </ul>
-                  </Card>
-                </TiltCard>
-              </EaseIn>
-            ))}
-          </div>
-        </section>
-
-        
+        {/* What I Bring (segmented, JSON-driven) */}
+        <WhatIBring content={skills as any} />
 
         {/* Call to Action */}
         <section className={cn(spacing.container, spacing.section, "text-center") }>
           <EaseIn>
             <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-12">
-              <Title as="h2">READY TO COLLABORATE?</Title>
-              <p className="text-xl text-brand-black mb-8 leading-relaxed">
-                Whether you need architectural guidance, system design expertise, or a complete iOS solution, I'm here to
-                help bring your vision to life.
+              <Title as="h2" align="center">READY TO COLLABORATE?</Title>
+              <p className={cn(typography.subtitle, "text-brand-black mb-8") }>
+                From iOS architecture and concurrency to CMS-backed web and AI-powered bots, I bring scalable systems,
+                thoughtful design, and leadership that ships. Whether you're a company, a startup, or hiring for
+                freelance, let's build something that lasts.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button href="mailto:firas@theinkedengineer.com" variant="primary" size="lg">
+                <Button href="mailto:firas@hey.com" variant="primary" size="lg">
                   Get In Touch
                 </Button>
               </div>

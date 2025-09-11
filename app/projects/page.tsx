@@ -165,23 +165,20 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          {/* Call to Action */}
+          {/* Call to Action (aligned with Hire Me) */}
           <div className="mt-16 text-center">
             <EaseIn>
-              <Card variant="hero">
-                <Title as="h2" color="white" margin="sm">Got an idea?</Title>
-                <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-12">
+                <Title as="h2" align="center">Got an idea?</Title>
+                <p className={cn(typography.subtitle, "text-brand-black mb-8 max-w-2xl mx-auto") }>
                   I'm always excited to work on new projects and collaborate with creative minds.
                 </p>
                 <Link href="/hire-me">
                   <Button variant="primary" size="lg">
-                    <span>Let's build something amazing</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    Let's build something amazing
                   </Button>
                 </Link>
-              </Card>
+              </div>
             </EaseIn>
           </div>
         </div>

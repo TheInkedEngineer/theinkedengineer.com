@@ -54,4 +54,3 @@ export function InsightsPageClient({ articles }: { articles: ArticleMetadata[] }
     </>
   )
 }
-

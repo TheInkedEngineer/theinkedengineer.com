@@ -22,7 +22,8 @@ export function Button(props: AnchorProps | NativeButtonProps) {
   const base = "inline-flex items-center justify-center gap-2 rounded-full font-bold transition-colors duration-300 focus-visible:outline-hidden focus-visible:ring-[3px] focus-visible:ring-ring/50"
 
   const variants: Record<ButtonVariant, string> = {
-    primary: "bg-brand-yellow text-brand-black hover:bg-brand-black hover:text-brand-yellow",
+    // Primary: default black, invert to yellow on hover
+    primary: "bg-brand-black text-brand-yellow hover:bg-brand-yellow hover:text-brand-black",
     secondary: "bg-brand-black text-brand-yellow hover:bg-brand-pink",
     ghost: "bg-transparent border-2 border-current",
   }
@@ -51,4 +52,3 @@ export function Button(props: AnchorProps | NativeButtonProps) {
     </button>
   )
 }
-

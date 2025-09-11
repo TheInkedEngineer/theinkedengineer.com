@@ -1,32 +1,56 @@
-[
-  {
-    "category": "Code Architecture",
-    "items": [
-      "MVVM-C Pattern",
-      "Dependency Injection",
-      "Clean Architecture",
-      "Modular Design",
-      "Protocol-Oriented Programming"
-    ]
-  },
-  {
-    "category": "System Design",
-    "items": [
-      "Scalable Architecture",
-      "Performance Optimization",
-      "Data Flow Design",
-      "API Integration",
-      "Offline-First Design"
-    ]
-  },
-  {
-    "category": "Design Systems",
-    "items": [
-      "Component Libraries",
-      "Design Tokens",
-      "Accessibility Standards",
-      "Cross-Platform Consistency",
-      "Design-Dev Collaboration"
-    ]
-  }
-]
+{
+  "companies": [
+    {
+      "title": "iOS Architecture & System Design",
+      "desc": "Building modular, scalable apps that are easy to evolve and maintain."
+    },
+    {
+      "title": "Concurrency Expertise",
+      "desc": "Performance-focused, rock-solid code for complex, real-time systems."
+    },
+    {
+      "title": "Design Systems & Collaboration",
+      "desc": "Driving alignment between design and engineering to move faster and smarter."
+    },
+    {
+      "title": "Engineering Leadership",
+      "desc": "Mentoring teams, defining technical strategies, and setting high-quality standards."
+    }
+  ],
+  "freelance": [
+    {
+      "title": "AI-Powered Bots",
+      "desc": "Python-based, RAG-driven bots with custom tooling that solve real-world problems."
+    },
+    {
+      "title": "Clean, Maintainable Code",
+      "desc": "I obsess over clarity and maintainability, ensuring your project is easy to grow."
+    },
+    {
+      "title": "Creative Digital Experiences",
+      "desc": "From fun and engaging designs to polished, professional interfaces."
+    },
+    {
+      "title": "Collaboration-First Mindset",
+      "desc": "I thrive on working closely with designers, developers, and product thinkers."
+    }
+  ],
+  "startups": [
+    {
+      "title": "Rapid Product Development",
+      "desc": "Getting your idea from concept to launch quickly without sacrificing quality."
+    },
+    {
+      "title": "Flexible CMS Websites",
+      "desc": "Next.js and TinaCMS solutions that balance speed, customization, and beautiful, responsive design."
+    },
+    {
+      "title": "Strategic Tech Guidance",
+      "desc": "Helping you make the right architectural decisions early so you can scale later."
+    },
+    {
+      "title": "Hands-on Problem Solving",
+      "desc": "Rolling up my sleeves to tackle urgent technical challenges."
+    }
+  ]
+}
