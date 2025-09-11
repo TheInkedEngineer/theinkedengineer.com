@@ -6,7 +6,7 @@ description: 'A Swift way to see if app is running XCTest.'
 
 #  Check if app is running unit tests the Swift way
 
-While writing unit tests for function in my [framework](https://github.com/TheInkedEngineer/BloodyMary), I ran into a problem in the following function:
+While writing unit tests for a function in my [framework](https://github.com/TheInkedEngineer/BloodyMary), I ran into a problem in the following function:
 
 ```swift
 public func pushViewController( 
@@ -43,7 +43,7 @@ extension Thread {
         continue
       }
     
-      if keyAsString.split(separator: “.”).contains(“xctest”) {
+      if keyAsString.split(separator: ".").contains("xctest") {
         return true
       }
     }
@@ -52,7 +52,7 @@ extension Thread {
 }
 ```
 
-I opted to check for *xctest* alone and not the whole key to future proof it, from any possibile changes to the key.
+I opted to check for *xctest* alone and not the whole key to future-proof it, from any possible changes to the key.
 
 So now the code looks like this:
 

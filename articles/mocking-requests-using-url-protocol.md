@@ -70,7 +70,7 @@ class MockURLProtocol: URLProtocol {
 1. A dictionary mapping url requests to data we want to return.
 2. Determines whether this specific class can handle the passed request. This is not in the scope of the article, return true. This is an abstract method therefore we need to provide an implementation.
 3. It is up for each implementation of `URLProtocol` to decide what canonical means. This is out of scope, we return the request. This is an abstract method therefore we need to provide an implementation.
-4. This is where all the logic happens. Each time a new request is dispatched, this is the function that handles its behaviour.
+4. This is where all the logic happens. Each time a new request is dispatched, this is the function that handles its behavior.
 5. We make sure the request's URL is valid, then proceed to extract the data associated with that URL from the dictionary created at point 1. If the data is found, we pass it to `client?.urlProtocol(self, didLoad: data)` method which tells the client some data has loaded.
 6. Regardless of how data loading went, we need to always call `client?.urlProtocolDidFinishLoading(self)` to notify the client that the `URLProtocol` finished doing his job.
 7. This is required but don't need to do anything.
@@ -224,7 +224,7 @@ DispatchQueue
 ```
 
 ## Suggestions to make it prettier
-The current version is a fully functional, customisable mocked `URLProtocol` class. However, it can be made even better. Below are some tips:
+The current version is a fully functional, customizable mocked `URLProtocol` class. However, it can be made even better. Below are some tips:
 
 ### Use `enum`s
 Leverage `enum` for the supported HTTP status codes, and HTTP versions. Below is an example.

@@ -21,7 +21,7 @@ For those who do not know, Cardi B is a female rapper turned mega pop star from 
 She recently made headlines when a couple of her old videos resurfaced online where she admits to being a sex worker (which is illegal by law), 
 who lured men with sex to drug them (which is illegal by law) and rob them (which is illegal by law).
 
-let that sink in for a second…
+Let that sink in for a second…
 
 She faced little to no backlash. What made things even worse for me, was the statement she put out after the fact to justify what she did.
 
@@ -58,10 +58,10 @@ He would have every female movement against him. He would have been canceled.
 The list really just goes on and on. Just look up what happened to Bill Cosby and R. Kelly.
 
 I am not saying that men should be forgiven for behaving immorally. 
-However, just like men and dragged through the mud when allegations are made against them, women should receive equal treatment.
+However, just like men are dragged through the mud when allegations are made against them, women should receive equal treatment.
 
 Actually, I can make a case how Louis C.K. masturbating over the phone is really nothing compared to what Cardi admitted to doing. 
-Yet he is canceled while she is cashing multi-million dollars from Pepsi, Netflix, and Fashionova among others.
+Yet he is canceled while she is cashing multi-million dollars from Pepsi, Netflix, and Fashion Nova among others.
 
 Cardi B should be canceled. Cardi B should face trial. Cardi B should go to jail.
 

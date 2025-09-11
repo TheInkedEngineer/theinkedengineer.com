@@ -1,7 +1,7 @@
 ---
 title: 'Bridging CoreLocation to Swift 6 Concurrency'
 date: '2024-11-11'
-description: 'How to bridge CoreLocation to Swift 6 Concurrncy model, and what are the problems and how to solve them.'
+description: 'How to bridge CoreLocation to Swift 6 Concurrency model, and what are the problems and how to solve them.'
 ---
 
 # Bridging CoreLocation to Swift 6's Concurrency: Challenges and Solutions

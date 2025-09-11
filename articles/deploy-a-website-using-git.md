@@ -6,9 +6,9 @@ description: 'A step by step guide to deploying a website using `Git`.'
 
 # Deploy a website remotely using Git
 
-This a step by step tutorial, teaching you how to leverage *Git* to deploy your website to your remote server. It will guide you through each and every step. Familiarity with *[Git](https://git-scm.com/)* and the [Linux Shell](http://linuxcommand.org/lc3_learning_the_shell.php) are a plus, but not mandatory.
+This is a step-by-step tutorial, teaching you how to leverage *Git* to deploy your website to your remote server. It will guide you through each and every step. Familiarity with *[Git](https://git-scm.com/)* and the [Linux Shell](http://linuxcommand.org/lc3_learning_the_shell.php) are a plus, but not mandatory.
 
-## 1. Login to server
+## 1. Log in to the server
 
 Open your terminal and login to your server using the following command:
 
@@ -24,7 +24,7 @@ By default, the username is the same as the host machine, unless you specify a d
 
 This command will prompt you to insert your password. Once you do, you are logged in.
 
-## 2. Install git on server
+## 2. Install Git on the server
 
 To install *Git* on the server run the following commands
 
@@ -61,7 +61,7 @@ mkdir website_name
 Now, the full path to where you will put your source code is */var/www/website\_\folder/*
 This path will come in handy when setting up the *Git* repository.
 
-## 4. Initialise a Git repository on your server
+## 4. Initialize a Git repository on your server
 
 ```no-highlight
 #1
@@ -117,16 +117,16 @@ git --work-tree=path_to_website_folder --git-dir=path_to_git_directory checkout 
 2. Runs `git checkout -f name_of_branch` where the *[worktree](https://git-scm.com/docs/git-worktree)* value is the path to the folder we created in [point 3](#create-a-folder-for-the-code), and the *--git-dir* value is the path the *bare* git directory we created.
     The *name\_of\_branch* value is optional and when not explicitly mentioned, defaults to *master*.
 
-Saving the modifications, and quit the editor.
+Save the modifications and quit the editor.
 
 **NB**: We can add other commands, like restarting the server.
 
-## 6. Make the bash executable
+## 6. Make the bash script executable
 
 One last step is needed, and that is to make the *post-receive* script we just created executable.
 To do so run the following command: `chmod +x post-receive`
 
-You can now logout from the server by running `logout`.
+You can now log out from the server by running `logout`.
 
 ## 7. Push local code to the server
 

@@ -11,11 +11,11 @@ It enables entire websites to be built using Swift, and supports themes, plugins
 
 It's an open-source framework developed by John Sundell and powers [his website](https://www.swiftbysundell.com)
 
-Publish relies on `Plot` and `Ink` to make the experience as Swift-y as possible. The former is a domain-specific language (DSL) for writing type-safe HTML, XML and RSS in Swift, whereas the latter is a markdown parser that enabled creating new posts (like this one) by simply adding a markdown file in the correct folder.  
+Publish relies on `Plot` and `Ink` to make the experience as Swift-y as possible. The former is a domain-specific language (DSL) for writing type-safe HTML, XML and RSS in Swift, whereas the latter is a markdown parser that enables creating new posts (like this one) by simply adding a markdown file in the correct folder.  
 
 ## Getting Started
 
-The fastest way to work with publish is by using its command-line tool (CLI). To install the CLI clone the repo, navigate inside of it and run `make`.
+The fastest way to work with Publish is by using its command-line tool (CLI). To install the CLI clone the repo, navigate inside of it and run `make`.
 
 ```no-highlight
 $ git clone https://github.com/JohnSundell/Publish.git
@@ -31,7 +31,7 @@ $ cd MyWebsite
 $ publish new
 ```
 
-Finally, run open Package.swift to open up the project in Xcode to start building your new website.
+Finally, open Package.swift to open up the project in Xcode to start building your new website.
 
 ## Project Structure
 
@@ -92,8 +92,8 @@ try MyWebsite().publish(withTheme: .foundation)
 
 ## Creating a custom theme
 
-Foundation is ok. However, you'd would want your website to have its own feel and look. That's where creating your own theme comes into place.
-A theme requires two parameters to be created: an `htmlFactory` and a `resourcePath`. The latter is self explanatory. It basically requires an array of strings pointing to the relative paths of the resources to include (`CSS` files).
+Foundation is OK. However, you’d want your website to have its own feel and look. That's where creating your own theme comes into place.
+A theme requires two parameters to be created: an `htmlFactory` and a `resourcePath`. The latter is self-explanatory. It basically requires an array of strings pointing to the relative paths of the resources to include (`CSS` files).
 The `htmlFactory` on the other hand is slightly more complicated. It should be an instance of an object (ideally a `Struct`) that conforms to `HtmlFactory` and implements the needed methods.
 
 - `func makeIndexHTML(index: Index, context: PublishingContext<TheInkedEngineerWebsite>) throws -> HTML` is required and should compose the code to generate the `HTML` code for the home page.
@@ -115,7 +115,7 @@ static var myTheme: Theme {
 }
 ```
 
-To use the theme, got to `main.swift` and modify the `.publish` method passing your newly created theme instead of `.foundation`.
+To use the theme, go to `main.swift` and modify the `.publish` method passing your newly created theme instead of `.foundation`.
 
 ## Tips and Tricks
 

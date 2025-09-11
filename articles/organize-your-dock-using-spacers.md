@@ -6,7 +6,7 @@ description: 'A cool trick to organize your macOS dock.'
 
 # Organize your dock using spacers
 
-A simple way to organize the dock in groups of apps is using a white space as shown in the example below.
+A simple way to organize the dock in groups of apps is using a whitespace as shown in the example below.
 
 ![article banner](/images/articles/organize-your-dock-using-spacers/example.png "banner")
 

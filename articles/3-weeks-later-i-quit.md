@@ -14,7 +14,7 @@ I believe in a simple philosophy. You are as good as the people you surround you
 That is why exactly, 3 weeks after starting my new job I quit.
 
 Let me tell you a quick fact about consultancy in general in Italy. The code is trash more often than not. No tests. No comments. No proper architecture. 
-And most importantly, NO CODE REVIEW. I’ll talk about these problem in a whole different article. Bottom line is, I wanted to bring that culture to consultancy.
+And most importantly, NO CODE REVIEW. I’ll talk about these problems in a whole different article. Bottom line is, I wanted to bring that culture to consultancy.
 
 ## Why I got the job
 
@@ -29,7 +29,7 @@ I don’t care about the job title or the pay, all that is useless if I am not g
 
 I was assured that even tho the code is not top notch at the moment, they do believe in clean code, team culture and don’t want developers that copy and paste code from stackoverflow.
 
-We agreed to do a 3 month trial period to see if I like what they have to offer and if they like my work too.
+We agreed to do a 3 months trial period to see if I like what they have to offer and if they like my work too.
 
 ## Reality
 
@@ -38,13 +38,13 @@ So I spent the first three days just experimenting on playgrounds with future th
 
 Day 4, my macbook finally arrived, but my credentials are still not yet activated.
 To be fair, this did not depend on them but on their client. I use a colleague’s credentials and download the project. 
-An hour later, I knew there was no way I will stay longer than those 3 month, here’s why:
+An hour later, I knew there was no way I will stay longer than those 3 months, here’s why:
 
-- The podfile was not versioned. That alone led to several hours of problems before getting the project actually up and running once the versions where figured out.
+- The podfile was not versioned. That alone led to several hours of problems before getting the project actually up and running once the versions were figured out.
 
-- A payment app racking hundreds of thousand of lines of code, hundreds of thousand of users had 0 comments. ZERO.
+- A payment app racking hundreds of thousands of lines of code, hundreds of thousands of users had 0 comments. ZERO.
 
-- Architecture was non existent. Folder hierarchy was non existent.
+- Architecture was nonexistent. Folder hierarchy was nonexistent.
 
 Bottom line, the code was bad and unmaintainable.
 

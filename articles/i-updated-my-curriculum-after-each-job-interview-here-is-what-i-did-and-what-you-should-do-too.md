@@ -93,7 +93,7 @@ Though this version is not particularly bad, it is too verbose and too dark. It 
 
 !["Curriculum versione 3"](/images/articles/i-updated-my-curriculum-after-each-job-interview-here-is-what-i-did-and-what-you-should-do-too/img2.png)
 
-The first thing you notice in this version is that it has more white space, is generally more colourful and more tender or the eyes.
+The first thing you notice in this version is that it has more whitespace, is generally more colourful and more tender on the eyes.
 
 Different sections do pop out more, but later I came to realise that it is still clumsy in the upper part (more on this is version 3).
 
@@ -157,7 +157,7 @@ There is no point in putting it in a chart on your curriculum. No good can come 
 
 I changed the font to “Futura” for titles, and “Open Sans” for text.
 
-Even MORE white space.
+Even MORE whitespace.
 
 ### Layout
 
@@ -204,5 +204,5 @@ No changes
 ## **TL;DR**
 
 - less is more. They won’t read your curriculum that long. Stick to what is important
-- white space
+- whitespace
 - STOP USING CHARTS, STARS, PERCENTAGES and any other equivalent to represent your skills in a resume.

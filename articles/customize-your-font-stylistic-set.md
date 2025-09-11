@@ -15,16 +15,16 @@ This sounded like a straightforward task:
 - Update the centralized font generating function
 
 However, there was a twist, they wanted to use a variation of the font modifying some stylistic sets.
-Stylistic sets are a feature available in some fonts that enables alternate versions of some characters. 
+Stylistic sets are a lesser-known feature available in some fonts that enables alternate versions of some characters. 
 Below is an example of the letter K using _Galano Grotesque Alt_ font with its stylistic set turned off, then on.
 
 ![Stylistic set of the letter K turned off](/images/articles/customize-your-font/stylistic_set_off.png)
-![Stylistic set of the letter K turned o](/images/articles/customize-your-font/stylistic_set_on.png)
+![Stylistic set of the letter K turned on](/images/articles/customize-your-font/stylistic_set_on.png)
 
 ## Step by step
 
 For the purpose of this tutorial we will be using the default iOS font to make sure anyone can correctly follow along.
-Remember however, not all fonts have custom stylistic set.
+Remember however, not all fonts have custom stylistic sets.
 
 - Start off by printing the information of the font. To do so, add this somewhere in your code:
 
@@ -107,7 +107,7 @@ let descriptor = UIFont.systemFont(ofSize: 12)
 - Finally we create our new font using the `init(descriptor: UIFontDescriptor, size: CGFloat)`.
 
 ```swift
-// By passing 0 as a size we fallback of the on the font's descriptor font size. 
+// By passing 0 as the size we fall back on the font descriptor's size. 
 let font = UIFont(descriptor: descriptor, size: 0)
 ```
 

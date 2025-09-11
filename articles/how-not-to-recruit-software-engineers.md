@@ -32,15 +32,15 @@ which roughly translates to:
 Good evening, I would like to kindly ask you for you CV because I would like to discuss with you an opportunity in Milan for a final client as a SW Engineer. Thanks (email)
 ```
 
-Here what is wrong:
+Here’s what’s wrong:
 
 - She asked for my curriculum when she could have easily read my LinkedIn page.
 
-- The message felt like a copy paste. She did not even bother adding my name to give it (even if fake) the feeling that it was meant for me.
+- The message felt like a copy-paste. She did not even bother adding my name to give it (even if fake) the feeling that it was meant for me.
 
 - I do understand that headhunters want to keep the name of the company private for obvious reasons, but at least let me know what sector they work in.
 
-- I know the position is a software engineering position. Can I know more, please tho? 
+- I know the position is a software engineering position. Can I know more, please, though? 
 Like my responsibilities? the technology I will work with? domain I will work in? Is it a frontend, backend, mobile position?
 
 Headhunters need to realize that software engineers choose the company and position as much as the company chooses them.
@@ -105,7 +105,7 @@ YUP, you read that right!!!!
 Here what is wrong:
 
 - She did not read my curriculum. 
-No way 9 minutes after I send my curriculum she read the email, curriculum and had the time to write her answer. Not when I sent it via email at 9:55 p.m you.
+No way 9 minutes after I send my curriculum she read the email, curriculum and had the time to write her answer. Not when I sent it via email at 9:55 p.m.
 
 - She made a typo. I point that out because of her extremely fast response time.
 
@@ -124,7 +124,7 @@ Companies, please hire good recruiters that care about the human in people they 
 ## TL;DR
 
 - Customize your initial message
-- Tell us information about the job, if possibile the company too.
+- Tell us information about the job, if possible the company too.
 - Don’t ask for a curriculum on LinkedIn.
 - Actually read our curriculum when you ask for it.
 - Do not ask us how much we are currently getting paid. For sure not before assessing our skills.
