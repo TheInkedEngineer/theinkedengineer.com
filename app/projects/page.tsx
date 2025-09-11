@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { EaseIn } from "@/components/animate/EaseIn"
@@ -15,7 +16,20 @@ import { getAnimationDelay, cn } from "@/lib/utils"
 import { typography, spacing } from "@/lib/design-system"
 
 export default function ProjectsPage() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+
   const [activeCategory, setActiveCategory] = useState<"ios" | "web">("ios")
+
+  // Initialize from `category` query param when present
+  useEffect(() => {
+    const c = (searchParams.get("category") || "").toLowerCase()
+    if (c === "ios" || c === "web") {
+      setActiveCategory(c as "ios" | "web")
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   const subtitle =
     activeCategory === "ios"
       ? "Swift-crafted apps and SDKs for Apple platforms—performance with polish."
@@ -59,7 +73,13 @@ export default function ProjectsPage() {
                   { label: "Web Development", value: "web" },
                 ]}
                 value={activeCategory}
-                onChange={(v) => setActiveCategory(v as "ios" | "web")}
+                onChange={(v) => {
+                  const next = v as "ios" | "web"
+                  setActiveCategory(next)
+                  const params = new URLSearchParams(searchParams)
+                  params.set("category", next)
+                  router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+                }}
               />
             </div>
           </EaseIn>

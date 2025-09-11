@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSearchParams, useRouter, usePathname } from "next/navigation"
 import { InsightsSwitcher, Mode } from "@/components/insights/insights-switcher"
 import { EaseIn } from "@/components/animate/EaseIn"
 import { Title } from "@/components/ui/title"
@@ -16,7 +17,27 @@ type ArticleMetadata = {
 }
 
 export function InsightsPageClient({ articles }: { articles: ArticleMetadata[] }) {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
+
   const [mode, setMode] = useState<Mode>("articles")
+
+  // Initialize from `tab` query param when present
+  useEffect(() => {
+    const tab = (searchParams.get("tab") || "").toLowerCase()
+    if (tab === "articles" || tab === "talks") {
+      setMode(tab as Mode)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const handleModeChange = (next: Mode) => {
+    setMode(next)
+    const params = new URLSearchParams(searchParams)
+    params.set("tab", next)
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+  }
 
   const subtitle =
     mode === "articles"
@@ -50,7 +71,7 @@ export function InsightsPageClient({ articles }: { articles: ArticleMetadata[] }
       </div>
 
       {/* Insights/Talks Switcher */}
-      <InsightsSwitcher articles={articles} mode={mode} onModeChange={setMode} />
+      <InsightsSwitcher articles={articles} mode={mode} onModeChange={handleModeChange} />
     </>
   )
 }
