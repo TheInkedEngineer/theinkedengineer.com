@@ -1,6 +1,26 @@
 "use client"
 
+import React from "react"
+import { SlamIn } from "@/components/animate/SlamIn"
+
 export default function HomePage() {
+  const [shouldAnimate, setShouldAnimate] = React.useState<boolean | null>(null)
+
+  React.useEffect(() => {
+    try {
+      const key = "home-slam-played"
+      const played = typeof window !== "undefined" ? sessionStorage.getItem(key) : null
+      if (played) {
+        setShouldAnimate(false)
+      } else {
+        sessionStorage.setItem(key, "1")
+        setShouldAnimate(true)
+      }
+    } catch {
+      // If sessionStorage is unavailable, default to animating once
+      setShouldAnimate(true)
+    }
+  }, [])
 
   return (
     <main id="main-content" className="relative md:fixed md:inset-0 w-full min-h-screen bg-brand-yellow overflow-x-hidden">
@@ -16,36 +36,40 @@ export default function HomePage() {
         {/* Desktop Layout */}
         <div className="hidden md:block relative p-8">
           <div className="absolute inset-0 p-8">
-            <p
-              className="text-brand-black font-black uppercase leading-none text-[10vw] break-words"
-              style={{ overflowWrap: 'anywhere' }}
-            >
-              <span className="opacity-50">HELLOIAM</span>
-              <a href="https://linkedin.com/in/theinkedengineer" className="opacity-100" target="_blank">FIRAS</a>
-              <span className="opacity-50">CHECKOUTTHE</span>
-              <a href="/projects" className="opacity-100">PROJECTS</a>
-              <span className="opacity-50">IBUILTTHE</span>
-              <a href="/insights" className="opacity-100">INSIGHTS</a>
-              <span className="opacity-50">ISHAREOR</span>
-              <a href="/hire-me" className="opacity-100">HIREME</a>
-              <span className="opacity-50">TOBUILDAMAZINGTHINGS</span>
-            </p>
+            <SlamIn animate={!!shouldAnimate}>
+              <p
+                className="text-brand-black font-black uppercase leading-none text-[10vw] break-words"
+                style={{ overflowWrap: 'anywhere' }}
+              >
+                <span className="opacity-50">HELLOIAM</span>
+                <a href="https://linkedin.com/in/theinkedengineer" className="opacity-100" target="_blank">FIRAS</a>
+                <span className="opacity-50">CHECKOUTTHE</span>
+                <a href="/projects" className="opacity-100">PROJECTS</a>
+                <span className="opacity-50">IBUILTTHE</span>
+                <a href="/insights" className="opacity-100">INSIGHTS</a>
+                <span className="opacity-50">ISHAREOR</span>
+                <a href="/hire-me" className="opacity-100">HIREME</a>
+                <span className="opacity-50">TOBUILDAMAZINGTHINGS</span>
+              </p>
+            </SlamIn>
           </div>
         </div>
 
         {/* Mobile Layout - Brutalist full-page text with large type and scrolling */}
         <div className="md:hidden relative p-6 mb-8">
-          <p className="text-brand-black font-black uppercase leading-[0.9] text-[18vw] break-words" style={{ overflowWrap: 'anywhere' }}>
-            <span className="opacity-30">HELLOIAM</span>
-            <a href="https://linkedin.com/in/theinkedengineer" className="opacity-100">FIRAS</a>
-            <span className="opacity-30">CHECKOUTTHE</span>
-            <a href="/projects" className="opacity-100">PROJECTS</a>
-            <span className="opacity-30">IBUILTTHE</span>
-            <a href="/insights" className="opacity-100">INSIGHTS</a>
-            <span className="opacity-30 ">ISHAREOR</span>
-            <a href="/hire-me" className="opacity-100">HIREME</a>
-            <span className="opacity-30 ">TOBUILDAMAZINGTHINGS</span>
-          </p>
+          <SlamIn animate={!!shouldAnimate}>
+            <p className="text-brand-black font-black uppercase leading-[0.9] text-[18vw] break-words" style={{ overflowWrap: 'anywhere' }}>
+              <span className="opacity-30">HELLOIAM</span>
+              <a href="https://linkedin.com/in/theinkedengineer" className="opacity-100">FIRAS</a>
+              <span className="opacity-30">CHECKOUTTHE</span>
+              <a href="/projects" className="opacity-100">PROJECTS</a>
+              <span className="opacity-30">IBUILTTHE</span>
+              <a href="/insights" className="opacity-100">INSIGHTS</a>
+              <span className="opacity-30 ">ISHAREOR</span>
+              <a href="/hire-me" className="opacity-100">HIREME</a>
+              <span className="opacity-30 ">TOBUILDAMAZINGTHINGS</span>
+            </p>
+          </SlamIn>
         </div>
       </div>
     </main>

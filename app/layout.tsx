@@ -64,7 +64,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        {/* Next.js will inject a manifest link for app/manifest.ts */}
       </head>
       <body className={`antialiased overflow-x-hidden`}>
         {children}
