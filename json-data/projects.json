@@ -47,6 +47,17 @@
   ],
   "web": [
     {
+      "id": "sodaclubbing",
+      "title": "SODA CLUBBING",
+      "description": "A bold loud website, for Milan's number one explicit party.",
+      "tech": ["NextJS", "Github API", "Shopify API"],
+      "status": "Live",
+      "image": "/images/projects/soda.png",
+      "color": "from-pink-500 to-blue-700",
+      "year": "2024",
+      "link": "https://soda-clubbing.vercel.app"
+    },
+    {
       "id": "fattiicazzituoi",
       "title": "fattiicazzituoi.it",
       "description": "A SFW generator of ways to say `fatti i cazzi tuoi`.",
