@@ -10,7 +10,7 @@ description: 'A story of AI, design, and becoming a code reviewer instead of a c
 
 ## Introduction: The 2025 Web-Building Landscape
 
-The way we build software has fundamentally changed. In 2025, AI is no longer a novelty; it’s a collaborator. But before we dive in, let's set expectations: there is a clear spectrum of what AI can and cannot build. You can’t ask it to create a full aviation control system, nor should you.
+The way we build software has fundamentally changed. In 2025, AI is no longer a novelty; it’s a collaborator. But before we dive in, let's set expectations: there is a clear spectrum of what AI can and cannot build. You can’t ask it to create a full aviation control system, nor should you expect it to.
 
 Even within the world of websites, complexity matters. Simple portfolios or marketing pages are now straightforward for AI to handle, and basic SaaS apps are achievable. But if you’re building a multi-tier platform with advanced services, you still need skilled engineers to drive architecture and make critical decisions.
 
