@@ -13,7 +13,7 @@ interface PageProps {
   params: { slug: string }
 }
 
-export const dynamic = "error"
+export const dynamicParams = false
 
 export function generateStaticParams() {
   return getAllArticles().map(({ slug }) => ({ slug }))

@@ -3,7 +3,8 @@ import { OgTemplate } from '@/lib/og/template'
 import { loadOgFonts } from '@/lib/og/fonts'
 import { getAllArticles, getArticleBySlug } from '@/lib/markdown'
 
-export const dynamic = 'error'
+export const dynamicParams = false
+export const runtime = 'nodejs'
 export function generateStaticParams() {
   return getAllArticles().map(({ slug }) => ({ slug }))
 }
