@@ -1,6 +1,17 @@
 {
   "ios": [
     {
+      "id": "vibedock",
+      "title": "Vibe Dock",
+      "description": "Your macOS dock on steroids, coming to a mac next you later this year.",
+      "tech": ["Swift", "SwiftUI", "macOS"],
+      "status": "Mac App",
+      "image": "/images/projects/vibedock.png",
+      "color": "from-purple-800 to-pink-800",
+      "year": "Coming Soon",
+      "link": ""
+    },
+    {
       "id": "espresso-martini",
       "title": "Espresso Martini",
       "description": "A Vapor-powered, Swift local server. Test your apps with realistic API responses and edge cases.",
@@ -27,7 +38,7 @@
       "title": "Mocka",
       "description": "A Mock Server Made for Developers by Developers. Built with Swift and SwiftUI for macOS, featuring Combine and Vapor integration.",
       "tech": ["Swift", "SwiftUI", "Vapor"],
-      "status": "Mac Application",
+      "status": "Mac App",
       "image": "/images/projects/mocka.png",
       "color": "from-purple-500 to-pink-500",
       "year": "2022",

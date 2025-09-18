@@ -87,101 +87,118 @@ export function ProjectsPageClient() {
       {/* Projects Grid */}
       <div className={cn(spacing.container)}>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-          {projects[activeCategory].map((project, index) => (
-            <EaseIn key={project.id} delay={getAnimationDelay(index, 75, 300)}>
-              <TiltCard>
-                <a
-                  href={project.link}
-                  className="block"
-                  {...(project.link.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                >
-                  <Card variant="default" interactive className="group">
-                    {/* Project Image (edge-to-edge inside padded card) */}
-                    <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden -mx-6 md:-mx-8 lg:-mx-10 -mt-6 md:-mt-8 lg:-mt-10 mb-6`}>
-                      <img
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        className="w-full h-full object-cover mix-blend-overlay opacity-80"
-                      />
-                      <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 bg-brand-black/80 text-white text-sm font-bold rounded-full">
-                          {project.year}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-4 left-4">
-                        <span
-                          className={`px-3 py-1 text-xs font-bold rounded-full ${
-                            project.status === "Live" || project.status === "Live on App Store"
-                              ? "bg-brand-black text-brand-yellow"
-                              : project.status === "In Development" || project.status === "Beta"
-                                ? "bg-brand-yellow text-brand-black"
-                                : project.status === "Inactive"
-                                  ? "bg-gray-200 text-gray-700"
-                                  : "bg-brand-pink text-brand-black"
-                          }`}
+          {projects[activeCategory].map((project, index) => {
+            const hasLink = Boolean(project.link?.trim())
+            const isExternal = hasLink && project.link.startsWith("http")
+
+            const cardContent = (
+              <Card variant="default" interactive={hasLink} className="group">
+                {/* Project Image (edge-to-edge inside padded card) */}
+                <div className={`h-64 bg-gradient-to-br ${project.color} relative overflow-hidden -mx-6 md:-mx-8 lg:-mx-10 -mt-6 md:-mt-8 lg:-mt-10 mb-6`}>
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-cover mix-blend-overlay opacity-80"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <span className="px-3 py-1 bg-brand-black/80 text-white text-sm font-bold rounded-full">
+                      {project.year}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-4 left-4">
+                    <span
+                      className={`px-3 py-1 text-xs font-bold rounded-full ${
+                        project.status === "Live" || project.status === "Live on App Store"
+                          ? "bg-brand-black text-brand-yellow"
+                          : project.status === "In Development" || project.status === "Beta"
+                            ? "bg-brand-yellow text-brand-black"
+                            : project.status === "Inactive"
+                              ? "bg-gray-200 text-gray-700"
+                              : "bg-brand-pink text-brand-black"
+                      }`}
+                    >
+                      {project.status}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Project Content */}
+                <Title as="h3" variant="card" className="text-brand-black group-hover:text-brand-pink transition-colors">
+                  {project.title}
+                </Title>
+
+                <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
+
+                {/* Tech + Desktop Link Row */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <Badge key={tech}>{tech}</Badge>
+                      ))}
+                    </div>
+                    {/* Desktop/tablet CTA label (non-link; whole card is clickable) */}
+                    {hasLink && (
+                      <span className="hidden md:inline-flex items-center text-brand-black font-bold group-hover:text-brand-pink transition-colors">
+                        <span className="mr-2">View Project</span>
+                        <svg
+                          className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          {project.status}
-                        </span>
-                      </div>
-                    </div>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={3}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
+                </div>
 
-                    {/* Project Content */}
-                    <Title as="h3" variant="card" className="text-brand-black group-hover:text-brand-pink transition-colors">
-                      {project.title}
-                    </Title>
+                {/* Project Link (mobile only) */}
+                {hasLink && (
+                  <div className="md:hidden inline-flex items-center text-brand-black font-bold group-hover:text-brand-pink transition-colors">
+                    <span className="mr-2">View Project</span>
+                    <svg
+                      className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </Card>
+            )
 
-                    <p className="text-gray-700 mb-6 leading-relaxed">{project.description}</p>
-
-                    {/* Tech + Desktop Link Row */}
-                    <div className="mb-6">
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.map((tech) => (
-                            <Badge key={tech}>{tech}</Badge>
-                          ))}
-                        </div>
-                        {/* Desktop/tablet CTA label (non-link; whole card is clickable) */}
-                        <span className="hidden md:inline-flex items-center text-brand-black font-bold group-hover:text-brand-pink transition-colors">
-                          <span className="mr-2">View Project</span>
-                          <svg
-                            className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={3}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Project Link (mobile only) */}
-                    <div className="md:hidden inline-flex items-center text-brand-black font-bold group-hover:text-brand-pink transition-colors">
-                      <span className="mr-2">View Project</span>
-                      <svg
-                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </div>
-                  </Card>
-                </a>
-              </TiltCard>
-            </EaseIn>
-          ))}
+            return (
+              <EaseIn key={project.id} delay={getAnimationDelay(index, 75, 300)}>
+                <TiltCard>
+                  {hasLink ? (
+                    <a
+                      href={project.link}
+                      className="block"
+                      {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
+                    >
+                      {cardContent}
+                    </a>
+                  ) : (
+                    <div className="block">{cardContent}</div>
+                  )}
+                </TiltCard>
+              </EaseIn>
+            )
+          })}
         </div>
 
         {/* Call to Action (aligned with Hire Me) */}
@@ -204,4 +221,3 @@ export function ProjectsPageClient() {
     </main>
   )
 }
-
