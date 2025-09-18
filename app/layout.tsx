@@ -20,20 +20,11 @@ export const metadata: Metadata = {
     title: "The Inked Engineer - Firas",
     description: "iOS developer and web enthusiast sharing technical articles and showcasing creative projects.",
     siteName: "The Inked Engineer",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "The Inked Engineer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Inked Engineer - Firas",
     description: "iOS developer and web enthusiast sharing technical articles and showcasing creative projects.",
-    images: ["/og-image.png"],
     creator: "@theinkedengineer",
   },
   robots: {

@@ -234,35 +234,6 @@
   }
 }
 
-/* Slam-in entrance animation (used on Home brutalist title) */
-@keyframes slamIn {
-  0% {
-    opacity: 0;
-    transform: translateY(var(--slam-y-start, -28px)) scale(var(--slam-scale-up, 1.18));
-  }
-  55% {
-    opacity: 1;
-    transform: translateY(calc(var(--slam-y-start, -28px) * -0.15)) scale(var(--slam-scale-down, 0.94));
-  }
-  75% {
-    transform: translateY(calc(var(--slam-y-start, -28px) * 0.07)) scale(var(--slam-scale-rebound, 1.03));
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.animate-slam-in {
-  animation-name: slamIn;
-  animation-duration: var(--slam-duration, 700ms);
-  animation-timing-function: cubic-bezier(.22,1,.36,1);
-  animation-fill-mode: both;
-  animation-delay: var(--slam-delay, 0ms);
-  will-change: transform, opacity;
-  transform-origin: center;
-}
-
 /* Improved mobile-first typography with better scaling and readability */
 .mega-title {
   font-family: 'Delight', sans-serif;
