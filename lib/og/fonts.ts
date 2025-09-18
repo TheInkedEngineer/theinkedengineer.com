@@ -32,13 +32,10 @@ export async function loadOgFonts(baseUrl?: string) {
         try {
           data = await fetchViaHttp(file)
         } catch {
-          // Final fallback for Node.js runtime: read from filesystem
-          try {
-            const fs = await import('fs/promises')
-            const path = `${process.cwd()}/public/fonts/${file}`
-            const buf = await fs.readFile(path)
-            data = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength)
-          } catch (e) {
+          if (process.env.NEXT_RUNTIME !== 'edge') {
+            const { loadFontFromFs } = await import('./fonts-node')
+            data = await loadFontFromFs(file)
+          } else {
             throw new Error(`Failed to load font ${file}`)
           }
         }

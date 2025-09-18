@@ -1,9 +1,12 @@
 import { ImageResponse } from 'next/og'
 import { OgTemplate } from '@/lib/og/template'
 import { loadOgFonts } from '@/lib/og/fonts'
-import { getArticleBySlug } from '@/lib/markdown'
+import { getAllArticles, getArticleBySlug } from '@/lib/markdown'
 
-export const runtime = 'nodejs'
+export const dynamic = 'error'
+export function generateStaticParams() {
+  return getAllArticles().map(({ slug }) => ({ slug }))
+}
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 

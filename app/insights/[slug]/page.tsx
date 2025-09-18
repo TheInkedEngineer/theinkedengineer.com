@@ -2,19 +2,25 @@ import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import ArticleActions from "@/components/article-actions"
 import { notFound } from "next/navigation"
-import { getArticleBySlug, markdownToHtml, formatDate } from "@/lib/markdown"
+import { getAllArticles, getArticleBySlug, markdownToHtml, formatDate } from "@/lib/markdown"
 import { EaseIn } from "@/components/animate/EaseIn"
 import { Card } from "@/components/ui/card"
 import { Title } from "@/components/ui/title"
-import { typography, spacing } from "@/lib/design-system"
+import { spacing } from "@/lib/design-system"
 import { cn } from "@/lib/utils"
 
 interface PageProps {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
+}
+
+export const dynamic = "error"
+
+export function generateStaticParams() {
+  return getAllArticles().map(({ slug }) => ({ slug }))
 }
 
 export default async function ArticlePage({ params }: PageProps) {
-  const { slug } = await params
+  const { slug } = params
   const article = getArticleBySlug(slug)
 
   if (!article) {
@@ -55,24 +61,24 @@ export default async function ArticlePage({ params }: PageProps) {
               <Title as="h1">{article.title}</Title>
             </div>
           </EaseIn>
-      </div>
-    </div>
-
-    {/* Floating top-right actions */}
-    <ArticleActions />
-
-    {/* Article Content */}
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <EaseIn y={16} duration={560} delay={120}>
-        <div className="mx-auto">
-          <Card variant="default">
-            <div className="prose prose-lg max-w-none">
-              <div className="article-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
-            </div>
-          </Card>
         </div>
-      </EaseIn>
-    </div>
+      </div>
+
+      {/* Floating top-right actions */}
+      <ArticleActions />
+
+      {/* Article Content */}
+      <div className={cn(spacing.container)}>
+        <EaseIn y={16} duration={560} delay={120}>
+          <div className="mx-auto">
+            <Card variant="default">
+              <div className="prose prose-lg max-w-none">
+                <div className="article-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+              </div>
+            </Card>
+          </div>
+        </EaseIn>
+      </div>
 
       <Navigation />
     </div>
