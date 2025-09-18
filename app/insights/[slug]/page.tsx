@@ -1,4 +1,5 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import ArticleActions from "@/components/article-actions"
 import { notFound } from "next/navigation"
@@ -17,6 +18,39 @@ export const dynamicParams = false
 
 export function generateStaticParams() {
   return getAllArticles().map(({ slug }) => ({ slug }))
+}
+
+export function generateMetadata({ params }: PageProps): Metadata {
+  const article = getArticleBySlug(params.slug)
+
+  if (!article) {
+    notFound()
+  }
+
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://theinkedengineer.com"
+  const url = new URL(`/insights/${article.slug}`, baseUrl).toString()
+  const description = article.description || `${article.title} — ${article.readTime}`
+  const imageUrl = new URL(`/insights/${article.slug}/opengraph-image`, baseUrl).toString()
+
+  return {
+    title: article.title,
+    description,
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description,
+      url,
+      publishedTime: article.date || undefined,
+      images: [{ url: imageUrl }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+      creator: "@theinkedengineer",
+      images: [imageUrl],
+    },
+  }
 }
 
 export default async function ArticlePage({ params }: PageProps) {

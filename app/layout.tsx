@@ -5,7 +5,7 @@ import "./globals.css"
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://theinkedengineer.com"),
   title: {
-    default: "The Inked Engineer - Firas",
+    default: "Firas, The Inked Engineer",
     template: "%s | The Inked Engineer",
   },
   description:
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://theinkedengineer.com",
-    title: "The Inked Engineer - Firas",
+    title: "Firas, The Inked Engineer",
     description: "iOS developer and web enthusiast sharing technical articles and showcasing creative projects.",
     siteName: "The Inked Engineer",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Inked Engineer - Firas",
+    title: "Firas, The Inked Engineer",
     description: "iOS developer and web enthusiast sharing technical articles and showcasing creative projects.",
     creator: "@theinkedengineer",
   },
