@@ -11,7 +11,7 @@ import { spacing } from "@/lib/design-system"
 import { cn } from "@/lib/utils"
 
 interface PageProps {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
 export const dynamicParams = false
@@ -20,8 +20,9 @@ export function generateStaticParams() {
   return getAllArticles().map(({ slug }) => ({ slug }))
 }
 
-export function generateMetadata({ params }: PageProps): Metadata {
-  const article = getArticleBySlug(params.slug)
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const article = getArticleBySlug(slug)
 
   if (!article) {
     notFound()
@@ -54,7 +55,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
 }
 
 export default async function ArticlePage({ params }: PageProps) {
-  const { slug } = params
+  const { slug } = await params
   const article = getArticleBySlug(slug)
 
   if (!article) {
