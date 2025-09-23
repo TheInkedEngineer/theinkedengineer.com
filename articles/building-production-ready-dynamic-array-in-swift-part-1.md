@@ -1,6 +1,6 @@
 ---
 title: 'Under the Hood: Building a Production-Ready DynamicArray in Swift - Part 1'
-date: '2025-09-24'
+date: '2025-09-23'
 description: 'A deep dive into building a Swift Array from scratch using manual memory management, unsafe pointers, and preparing for Copy-on-Write semantics.'
 ---
 
