@@ -51,11 +51,22 @@ export default function HirePage() {
           </EaseIn>
 
           {/* CV Download Button */}
-          <EaseIn delay={200}>
+          {/* <EaseIn delay={200}>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button href="/curriculum.pdf" download variant="primary" size="lg" className="group">
                 <ArrowDownIcon className="w-5 h-5 group-hover:animate-bounce" />
                 Download CV
+              </Button>
+            </div>
+          </EaseIn> */}
+          <EaseIn delay={200}>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button
+                href="mailto:firas@hey.com?subject=Requesting%20Curriculum&body=Hi%20Firas%2C%20I%20would%20like%20you%20to%20work%20with%20us%20at%20_company%20name_"
+                variant="primary"
+                size="lg"
+              >
+                Request Curriculum
               </Button>
             </div>
           </EaseIn>
