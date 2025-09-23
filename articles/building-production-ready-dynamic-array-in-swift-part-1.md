@@ -35,7 +35,7 @@ public struct SimpleArray<Element> {
   }
 ```
 
-- `allocate(capacity:)` - get a typed, uninitialized block. 
+> `allocate(capacity:)` - get a typed, uninitialized block. \
 When we create the array, we need contiguous storage for Element.
 `buffer = .allocate(capacity: capacity)` gives us a pointer to typed but uninitialized memory. From this moment on, we are responsible for initializing, deinitializing, and eventually freeing it.
 
@@ -50,7 +50,7 @@ public mutating func append(_ element: Element) {
 }
 ```
 
-> `initialize(to:)` — write the first value into an uninitialized slot.
+> `initialize(to:)` — write the first value into an uninitialized slot. \
 In append, the next position (buffer + count) is **uninitialized**. `initialize(to:)` constructs an Element in-place there for the first time.
 (If we used plain assignment pointee = value here, we’d be assigning into **uninitialized** memory—undefined behavior. Assignment is only for **already-initialized** slots, e.g., subscript setter.)
 
