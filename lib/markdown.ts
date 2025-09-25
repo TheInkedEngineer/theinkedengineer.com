@@ -27,6 +27,25 @@ export interface ArticleMetadata {
 
 const articlesDirectory = path.join(process.cwd(), 'articles')
 
+function coerceBoolean(value: unknown): boolean {
+  if (typeof value === 'boolean') {
+    return value
+  }
+
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase()
+    if (normalized === 'true') {
+      return true
+    }
+
+    if (normalized === 'false') {
+      return false
+    }
+  }
+
+  return false
+}
+
 export function calculateReadTime(content: string): string {
   const wordsPerMinute = 200
   const words = content.trim().split(/\s+/).length
@@ -42,10 +61,15 @@ export function getAllArticles(): ArticleMetadata[] {
       const fullPath = path.join(articlesDirectory, name)
       const fileContents = fs.readFileSync(fullPath, 'utf8')
       const { data, content } = matter(fileContents)
-      
+
       const slug = name.replace(/\.md$/, '')
       const readTime = calculateReadTime(content)
-      
+      const isHidden = coerceBoolean(data.isHidden)
+
+      if (isHidden) {
+        return null
+      }
+
       return {
         slug,
         title: data.title || 'Untitled',
@@ -54,6 +78,7 @@ export function getAllArticles(): ArticleMetadata[] {
         readTime,
       }
     })
+    .filter((article): article is ArticleMetadata => article !== null)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return articles

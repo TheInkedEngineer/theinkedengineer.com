@@ -4,7 +4,7 @@ date: '2025-09-23'
 description: 'A deep dive into building a Swift Array from scratch using manual memory management, unsafe pointers, and preparing for Copy-on-Write semantics.'
 ---
 
-# Under the Hood: Building a Production-Ready DynamicArray in Swift
+# Under the Hood: Building a Production-Ready DynamicArray in Swift - I
 
 As Staff Engineers, we shouldn’t just use Swift’s tools—we should understand how they work. Swift’s Array is a value-type struct that delivers high performance and ergonomic APIs. How?
 
@@ -33,6 +33,7 @@ public struct SimpleArray<Element> {
     self.count = 0
     self.capacity = capacity
   }
+}
 ```
 
 > `allocate(capacity:)` - get a typed, uninitialized block. \
