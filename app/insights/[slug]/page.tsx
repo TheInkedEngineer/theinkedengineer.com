@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import ArticleActions from "@/components/article-actions"
 import { notFound } from "next/navigation"
-import { getAllArticles, getArticleBySlug, markdownToHtml, formatDate } from "@/lib/markdown"
+import { getAllArticleSlugs, getArticleBySlug, markdownToHtml, formatDate } from "@/lib/markdown"
 import { EaseIn } from "@/components/animate/EaseIn"
 import { Card } from "@/components/ui/card"
 import { Title } from "@/components/ui/title"
@@ -17,7 +17,7 @@ interface PageProps {
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  return getAllArticles().map(({ slug }) => ({ slug }))
+  return getAllArticleSlugs().map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

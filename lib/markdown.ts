@@ -53,56 +53,77 @@ export function calculateReadTime(content: string): string {
   return `${minutes} min read`
 }
 
+type LoadedArticle = {
+  slug: string
+  title: string
+  date: string
+  description: string
+  readTime: string
+  content: string
+  isHidden: boolean
+}
+
+function loadArticleFromFile(fileName: string): LoadedArticle {
+  const fullPath = path.join(articlesDirectory, fileName)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
+
+  const slug = fileName.replace(/\.md$/, '')
+  const readTime = calculateReadTime(content)
+
+  return {
+    slug,
+    title: data.title || 'Untitled',
+    date: data.date || '',
+    description: data.description || '',
+    readTime,
+    content,
+    isHidden: coerceBoolean(data.isHidden),
+  }
+}
+
 export function getAllArticles(): ArticleMetadata[] {
   const fileNames = fs.readdirSync(articlesDirectory)
   const articles = fileNames
     .filter((name) => name.endsWith('.md'))
-    .map((name) => {
-      const fullPath = path.join(articlesDirectory, name)
-      const fileContents = fs.readFileSync(fullPath, 'utf8')
-      const { data, content } = matter(fileContents)
-
-      const slug = name.replace(/\.md$/, '')
-      const readTime = calculateReadTime(content)
-      const isHidden = coerceBoolean(data.isHidden)
-
-      if (isHidden) {
-        return null
-      }
-
-      return {
-        slug,
-        title: data.title || 'Untitled',
-        date: data.date || '',
-        description: data.description || '',
-        readTime,
-      }
-    })
-    .filter((article): article is ArticleMetadata => article !== null)
+    .map((name) => loadArticleFromFile(name))
+    .filter((article) => !article.isHidden)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
-  return articles
+  return articles.map(({ slug, title, date, description, readTime }) => ({
+    slug,
+    title,
+    date,
+    description,
+    readTime,
+  }))
 }
 
 export function getArticleBySlug(slug: string): Article | null {
   try {
-    const fullPath = path.join(articlesDirectory, `${slug}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
-    const { data, content } = matter(fileContents)
-    
-    const readTime = calculateReadTime(content)
-    
+    const article = loadArticleFromFile(`${slug}.md`)
+
     return {
-      slug,
-      title: data.title || 'Untitled',
-      date: data.date || '',
-      description: data.description || '',
-      content,
-      readTime,
+      slug: article.slug,
+      title: article.title,
+      date: article.date,
+      description: article.description,
+      content: article.content,
+      readTime: article.readTime,
     }
   } catch (error) {
     return null
   }
+}
+
+export function getAllArticleSlugs(): string[] {
+  const fileNames = fs.readdirSync(articlesDirectory)
+
+  return fileNames
+    .filter((name) => name.endsWith('.md'))
+    .map((name) => loadArticleFromFile(name))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map((article) => article.slug)
 }
 
 export async function markdownToHtml(content: string): Promise<string> {
