@@ -1,8 +1,8 @@
 ---
 title: 'Under the Hood: Building a Production-Ready DynamicArray in Swift - Part 2'
-date: '2025-10-07'
+date: '2025-09-29'
 description: 'Solving memory leaks and broken value semantics by introducing a heap-allocated Buffer class with deinit and implementing true Copy-on-Write (COW).'
-isHidden: true
+isHidden: false
 ---
 
 # Under the Hood: Building a Production-Ready DynamicArray in Swift - II
