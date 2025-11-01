@@ -9,19 +9,13 @@
       ]
     }
   ],
-  "rewrites": [
-    {
-      "source": "/.well-known/apple-app-site-association",
-      "destination": "/.well-known/apple-app-site-association"
-    }
-  ],
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/:path((?!\\.well-known/apple-app-site-association$).*)",
       "has": [
         { "type": "host", "value": "theinkedengineer.com" }
       ],
-      "destination": "https://www.theinkedengineer.com/:path*",
+      "destination": "https://www.theinkedengineer.com/:path",
       "permanent": true
     }
   ]
