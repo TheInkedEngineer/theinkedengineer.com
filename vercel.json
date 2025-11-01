@@ -8,15 +8,5 @@
         { "key": "Content-Disposition", "value": "inline; filename=\"apple-app-site-association\"" }
       ]
     }
-  ],
-  "redirects": [
-    {
-      "source": "/:path((?!\\.well-known/apple-app-site-association$).*)",
-      "has": [
-        { "type": "host", "value": "theinkedengineer.com" }
-      ],
-      "destination": "https://www.theinkedengineer.com/:path",
-      "permanent": true
-    }
   ]
 }
