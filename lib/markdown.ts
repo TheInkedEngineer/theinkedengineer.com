@@ -60,7 +60,7 @@ type LoadedArticle = {
   description: string
   readTime: string
   content: string
-  isHidden: boolean
+  is_hidden: boolean
 }
 
 function loadArticleFromFile(fileName: string): LoadedArticle {
@@ -78,7 +78,7 @@ function loadArticleFromFile(fileName: string): LoadedArticle {
     description: data.description || '',
     readTime,
     content,
-    isHidden: coerceBoolean(data.isHidden),
+    is_hidden: coerceBoolean(data.is_hidden),
   }
 }
 
@@ -87,7 +87,7 @@ export function getAllArticles(): ArticleMetadata[] {
   const articles = fileNames
     .filter((name) => name.endsWith('.md'))
     .map((name) => loadArticleFromFile(name))
-    .filter((article) => !article.isHidden)
+    .filter((article) => !article.is_hidden)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
   return articles.map(({ slug, title, date, description, readTime }) => ({
@@ -122,6 +122,7 @@ export function getAllArticleSlugs(): string[] {
   return fileNames
     .filter((name) => name.endsWith('.md'))
     .map((name) => loadArticleFromFile(name))
+    .filter((article) => !article.is_hidden)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .map((article) => article.slug)
 }

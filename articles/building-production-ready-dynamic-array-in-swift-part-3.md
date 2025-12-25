@@ -2,7 +2,7 @@
 title: "Under the Hood: Building a Production-Ready DynamicArray in Swift – Part 3"
 date: "2025-10-31"
 description: "Turning our value-semantic DynamicArray into a first-class Swift collection: protocol conformances, safe range replacement, and capacity planning."
-isHidden: false
+is_hidden: false
 ---
 
 # Under the Hood: Building a Production-Ready DynamicArray in Swift – Part 3
