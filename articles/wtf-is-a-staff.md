@@ -79,9 +79,13 @@ Teams benefit from Staff engineers with different shapes. Uniformity is not the 
 
 When Senior engineers ask what they should learn next, I often think the better question is: what problems keep repeating, and why?
 
+On the Staff path, the biggest hurdle is usually not adding another framework but expanding scope and influence. Deep iOS expertise still matters, of course, but what truly moves the needle is understanding system design, architecture tradeoffs, performance, and how your work impacts multiple teams or the business as a whole.
+
 This is why seeing a CV with "Senior" or "Staff" next to only three years of total experience is such a disconnect from reality. It is a red flag, not an achievement.
 
 You can learn a framework in a month. You can memorize design patterns in a week. But you cannot speed-run the experience of living with your own bad decisions.
+
+If your goal is Staff level, I would prioritize things like technical leadership, mentoring, and collaborating closely with backend, product, and data teams. Those skills tend to carry much more weight than the specific UI framework you use.
 
 Real seniority comes from the long feedback loop of building something, releasing it, watching it break, and having to fix it six months later when the requirements have changed. If you have only been working for three years, you simply haven’t stuck around long enough to see how your "clean architecture" actually handles the messiness of real-world scale.
 
