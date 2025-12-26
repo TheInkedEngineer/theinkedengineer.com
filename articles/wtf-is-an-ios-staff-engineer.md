@@ -1,6 +1,6 @@
 ---
 title: 'What Being a Staff iOS Engineer Actually Means'
-date: '2025-12-29'
+date: '2025-12-26'
 description: 'No one seems to know what a Staff engineer really does. So I decided to share my point of view after 2 years in this role.'
 is_hidden: false
 ---
