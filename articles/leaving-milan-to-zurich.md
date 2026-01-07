@@ -2,7 +2,7 @@
 title: 'A New Chapter: Leaving Milan and Moving to Zurich'
 date: '2026-01-07'
 description: 'I am starting a new job, but this move is not only professional. It is personal, practical and long overdue.'
-is_hidden: true
+is_hidden: false
 ---
 
 # A New Chapter: Leaving Milan and Moving to Zurich
