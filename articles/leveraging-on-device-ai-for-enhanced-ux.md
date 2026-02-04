@@ -2,7 +2,7 @@
 title: 'Leveraging On-Device AI for Enhanced User Experience'
 date: '2026-02-05'
 description: 'How Apple’s on-device foundation models change the way developers build, ship, and scale AI features.'
-is_hidden: true
+is_hidden: false
 ---
 
 # Leveraging On-Device AI for Enhanced User Experience
