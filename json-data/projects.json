@@ -1,6 +1,17 @@
 {
   "ios": [
     {
+      "id": "apple-notes-mcp",
+      "title": "Apple Notes MCP",
+      "description": "Turn Apple Notes into an intelligent workspace with a powerful MCP integration designed for automation, organization, and advanced workflows on macOS.",
+      "tech": ["Swift", "MCP", "macOS"],
+      "status": "MCP",
+      "image": "/images/projects/apple-notes-mcp.png",
+      "color": "from-yellow-900 to-white-900",
+      "year": "2026",
+      "link": "https://github.com/TheInkedEngineer/apple-notes-mcp"
+    },
+    {
       "id": "vibedock",
       "title": "Vibe Dock",
       "description": "Your macOS dock on steroids, coming to a mac next you later this year.",
