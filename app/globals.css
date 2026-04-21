@@ -414,6 +414,12 @@
   }
 }
 
+/* White text stroke for nav items */
+.nav-text-stroke {
+  -webkit-text-stroke: 0.5px white;
+  paint-order: stroke fill;
+}
+
 /* Multicolor blinking nav dot */
 .nav-dot {
   animation: navDotBlink 3s ease-in-out infinite;

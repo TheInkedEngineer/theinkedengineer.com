@@ -12,7 +12,7 @@ export function Navigation() {
     { href: "/", label: "home"},
     { href: "/projects", label: "projects"},
     { href: "/insights", label: "insights"},
-    { href: "/hire-me", label: "hire me"},
+    // { href: "/hire-me", label: "hire me"},
   ]
 
   // Nav remains always visible; removed hide-on-scroll behavior
@@ -48,7 +48,7 @@ export function Navigation() {
                   {...(item.external && { target: "_blank", rel: "noopener noreferrer" })}
                 >
                   {/* Label */}
-                  <span className="text-xs md:text-sm font-bold tracking-wide uppercase">{item.label}</span>
+                  <span className="text-xs md:text-sm font-bold tracking-wide uppercase nav-text-stroke">{item.label}</span>
 
                   {/* Active indicator */}
                   {isActive && (
