@@ -1,7 +1,7 @@
 ---
 title: 'Running Two Codex Accounts on the Same Mac'
 date: '2026-09-10'
-description: 'I wanted my company API account and personal OpenAI account running side by side. My compromise: the Codex app for work and the CLI for personal experiments.'
+description: 'I wanted my company API account and personal OpenAI account running side by side. I kept the app on work, made the CLI personal by default, and added an explicit command for using either account from the terminal.'
 is_hidden: false
 ---
 
@@ -92,6 +92,45 @@ codex --help
 
 I chose this approach because I wanted the setting to apply specifically to terminal invocations of `codex`. Globally exporting `CODEX_HOME` would also affect other processes that inherit that environment, which makes it less clear which home a client will use.
 
+## Using the App Account from the Terminal
+
+Making the personal account the terminal default introduced one small inconvenience: an ordinary `codex exec` now always uses my personal account. Occasionally, I still want to run a non-interactive command with the company account used by the app.
+
+I added a second function to `~/.zshrc` for that:
+
+```bash
+codex-app() {
+    CODEX_HOME="$HOME/.codex" command codex "$@"
+}
+```
+
+After reloading the shell configuration:
+
+```bash
+source ~/.zshrc
+```
+
+I can choose the account through the command name:
+
+```bash
+# Personal ChatGPT account
+codex exec "explain this project"
+
+# Company API account used by the app
+codex-app exec "explain this project"
+```
+
+The name describes which account environment the command uses. `codex-app` does not open or control the desktop app; it runs the CLI with the same `~/.codex` home used by the app.
+
+The distinction is now:
+
+```text
+codex     → ~/.codex-personal → Personal ChatGPT account
+codex-app → ~/.codex          → Company API account
+```
+
+This gives me access to both accounts from scripts and terminal workflows while keeping the shorter `codex` command assigned to personal experiments.
+
 ## What the Separate Home Changes
 
 The separation extends beyond authentication. Each home can hold its own `config.toml`, sessions, history, and home-scoped customizations such as skills and prompts.
@@ -102,7 +141,17 @@ For authentication, I use a separate login flow in each home instead of copying 
 
 ## Checking Which Environment Is Active
 
-If the account looks wrong, I start by checking both homes directly:
+If the account looks wrong, I start by checking both commands:
+
+```bash
+# Company API account used by Desktop
+codex-app login status
+
+# Personal ChatGPT account
+codex login status
+```
+
+If I need to bypass the shell functions while debugging, I check both homes directly:
 
 ```bash
 # Default home used by Desktop
@@ -112,12 +161,12 @@ env -u CODEX_HOME codex login status
 CODEX_HOME="$HOME/.codex-personal" command codex login status
 ```
 
-These commands bypass the shell function and select the intended environment explicitly. For this setup, I expect an API-key login in the default home and a ChatGPT login in the personal home. The authentication mode is a useful first check, though it does not by itself distinguish between two accounts using the same login method.
+These commands bypass both shell functions and select the intended environment explicitly. For this setup, I expect an API-key login in the default home and a ChatGPT login in the personal home. The authentication mode is a useful first check, though it does not by itself distinguish between two accounts using the same login method.
 
-One detail is easy to miss: printing `$CODEX_HOME` in the shell does not show the value applied inside the wrapper. The function sets it only for the process it launches. To inspect the wrapper itself in `zsh`, use:
+One detail is easy to miss: printing `$CODEX_HOME` in the shell does not show the value applied inside either wrapper. Each function sets it only for the process it launches. To inspect both wrappers in `zsh`, use:
 
 ```bash
-functions codex
+functions codex codex-app
 ```
 
 ## What This Means for My Budget
@@ -130,7 +179,7 @@ My personal account still has its own usage limits. The benefit is that a person
 
 I would still prefer to have both accounts available inside the Codex app. For now, this setup gives me a practical way to keep them available side by side on the same Mac.
 
-I open the app for company work. When I want to try an idea on my personal account, I open a terminal and type `codex`. A separate home directory and a small shell function are all I need to make that choice part of my normal workflow.
+I open the app for company work. When I want to try an idea on my personal account, I open a terminal and type `codex`. If I need the company account in a terminal workflow, including through `codex exec`, I use `codex-app`. Two home directories and two small shell functions make the account choice explicit without requiring another installation of Codex.
 
 ## References
 
